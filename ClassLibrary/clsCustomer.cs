@@ -6,7 +6,7 @@ namespace ClassLibrary
     {
 
         public bool Email {  get; set; }
-        public DateTime RegistationDate { get; set; }
+        public DateTime RegistrationDate { get; set; }
         public int CustomerID { get; set; }
         public string FullName { get; set; }
         public string CustomerEmail { get; set; }
