@@ -16,7 +16,7 @@ namespace Testing5
             //test to see that it exists
             Assert.IsNotNull(Staff);
         }
-
+        [TestMethod]
         public void isAdminOK()
         {
             //create an instance of the class we want to create
@@ -32,6 +32,7 @@ namespace Testing5
             Assert.AreEqual(TestData, Staff.IsAdmin);
         }
 
+        [TestMethod]
         public void dateJoinedOK()
         {
             //create an instance of the class we want to create
@@ -48,6 +49,7 @@ namespace Testing5
 
         }
 
+        [TestMethod]
         public void staffIdOK()
         {
             //create an instance of the class we want to create
@@ -63,6 +65,8 @@ namespace Testing5
             Assert.AreEqual(TestData, Staff.staffId);
 
         }
+
+        [TestMethod]
         public void staffNameOk()
         {
             //create an instance of the class we want to create
@@ -78,6 +82,8 @@ namespace Testing5
             Assert.AreEqual(TestData, Staff.staffName);
 
         }
+
+        [TestMethod]
         public void jobTitleOK()
         {
             //create an instance of the class we want to create
@@ -93,6 +99,8 @@ namespace Testing5
             Assert.AreEqual(TestData, Staff.jobTitle);
 
         }
+
+        [TestMethod]
         public void staffEmailOK()
         {
             //create an instance of the class we want to create
@@ -108,6 +116,8 @@ namespace Testing5
             Assert.AreEqual(TestData, Staff.staffEmail);
 
         }
+
+        [TestMethod]
         public void staffAddressOK()
         {
             //create an instance of the class we want to create
