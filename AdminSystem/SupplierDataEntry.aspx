@@ -7,9 +7,24 @@
     <title></title>
 </head>
 <body>
-    This is the Supplier Data Entry Page
     <form id="form1" runat="server">
-        <div>
+        <div style="height: 421px">
+            <asp:Label ID="lblSupplierId" runat="server" style="z-index: 1; left: 13px; top: 22px; position: absolute" Text="Supplier ID" width="115px"></asp:Label>
+            <asp:TextBox ID="txtSupplierId" runat="server" height="22px" style="z-index: 1; left: 150px; top: 16px; position: absolute" width="128px" OnTextChanged="txtSupplierId_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="txtName" runat="server" height="22px" style="z-index: 1; left: 150px; top: 58px; position: absolute" width="128px" OnTextChanged="txtName_TextChanged"></asp:TextBox>
+            <asp:Label ID="lblEmail" runat="server" style="z-index: 1; left: 13px; top: 108px; position: absolute" Text="Email" width="115px"></asp:Label>
+            <asp:Label ID="lblName" runat="server" style="z-index: 1; left: 13px; top: 63px; position: absolute" Text="Name" width="115px"></asp:Label>
+            <asp:TextBox ID="txtEmail" runat="server" height="22px" style="z-index: 1; left: 150px; top: 102px; position: absolute" width="128px" OnTextChanged="txtEmail_TextChanged"></asp:TextBox>
+            <asp:Label ID="lblPhoneNumber" runat="server" style="z-index: 1; left: 13px; top: 148px; position: absolute" Text="Phone Number" width="115px"></asp:Label>
+            <asp:Label ID="lblAddress" runat="server" style="z-index: 1; left: 13px; top: 191px; position: absolute" Text="Address" width="115px"></asp:Label>
+            <asp:TextBox ID="txtAddress" runat="server" height="22px" style="z-index: 1; left: 150px; top: 184px; position: absolute" width="128px" OnTextChanged="txtAddress_TextChanged"></asp:TextBox>
+            <asp:Label ID="lblLastOrderDate" runat="server" style="z-index: 1; left: 13px; top: 232px; position: absolute" Text="Last Ordered Date"></asp:Label>
+            <asp:CheckBox ID="chkAvailable" runat="server" style="z-index: 1; left: 166px; top: 268px; position: absolute" Text="Is Available" OnCheckedChanged="chkAvailable_CheckedChanged" />
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 13px; top: 306px; position: absolute"></asp:Label>
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 162px; top: 346px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 106px; top: 346px; position: absolute" Text="Ok" />
+            <asp:TextBox ID="txtPhoneNumber" runat="server" height="22px" style="z-index: 1; left: 150px; top: 144px; position: absolute" width="128px" OnTextChanged="txtPhoneNumber_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="txtLastOrderDate" runat="server" height="22px" style="z-index: 1; left: 150px; top: 229px; position: absolute" width="128px" OnTextChanged="txtLastOrderDate_TextChanged"></asp:TextBox>
         </div>
     </form>
 </body>
