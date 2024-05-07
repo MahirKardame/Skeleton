@@ -25,7 +25,7 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the Customer Address for this entry
         Response.Write(AnCustomer.Address);
         //display Registration Date for this entry
-        Response.Write(AnCustomer.RegistationDate);
+        Response.Write(AnCustomer.RegistrationDate);
         //display email opt in for this entry
         Response.Write(AnCustomer.Email);
 
