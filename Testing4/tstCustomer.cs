@@ -35,9 +35,9 @@ namespace Testing4
             //create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the property
-            AnCustomer.DateAdded = TestData;
+            AnCustomer.RegistationDate = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnCustomer.DateAdded, TestData);
+            Assert.AreEqual(AnCustomer.RegistationDate, TestData);
         }
         [TestMethod]
         public void CustomerIDOK()
