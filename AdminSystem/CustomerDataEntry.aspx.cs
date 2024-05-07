@@ -34,7 +34,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the Customer Address
         AnCustomer.Address = txtAddress.Text;
         //capture the Registration Date
-        AnCustomer.RegistationDate = Convert.ToDateTime(DateTime.Now);    
+        AnCustomer.RegistrationDate = Convert.ToDateTime(DateTime.Now);    
         //Capture Email Opt In check box
         AnCustomer.Email = chkEmailOptIn.Checked;
 
