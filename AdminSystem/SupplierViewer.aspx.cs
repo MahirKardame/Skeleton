@@ -16,8 +16,8 @@ public partial class _1Viewer : System.Web.UI.Page
         AnSupplier = (clsSupplier)Session["AnSupplier"];
         //display the Name for the entry
         Response.Write(AnSupplier.SupplierId);
-        Response.Write(AnSupplier.Name);
-        Response.Write(AnSupplier.Email);
+        Response.Write(AnSupplier.SupplierName);
+        Response.Write(AnSupplier.SupplierEmail);
         Response.Write(AnSupplier.PhoneNumber);
         Response.Write(AnSupplier.Address);
         Response.Write(AnSupplier.LastOrderDate);
