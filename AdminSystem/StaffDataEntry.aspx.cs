@@ -32,7 +32,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the date joined
         Staff.dateJoined = Convert.ToDateTime(txtDateJoined.Text);
         //capture isAdmin checkbox
-        Staff.IsAdmin = chkIsAdmin.Checked;
+        Staff.isAdmin = chkIsAdmin.Checked;
         //store the name in the session object
         Session["Staff"] = Staff;
         //navigate to the view page

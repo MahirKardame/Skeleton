@@ -27,6 +27,6 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the date Joined
         Response.Write(Staff.dateJoined);
         //display isAdmin
-        Response.Write(Staff.IsAdmin);
+        Response.Write(Staff.isAdmin);
     }
 }
