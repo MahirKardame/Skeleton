@@ -27,7 +27,7 @@ public partial class _1Viewer : System.Web.UI.Page
         //display Registration Date for this entry
         Response.Write(AnCustomer.RegistrationDate);
         //display email opt in for this entry
-        Response.Write(AnCustomer.Email);
+        Response.Write(AnCustomer.EmailOptIn);
 
         
     }

@@ -36,7 +36,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the Registration Date
         AnCustomer.RegistrationDate = Convert.ToDateTime(DateTime.Now);    
         //Capture Email Opt In check box
-        AnCustomer.Email = chkEmailOptIn.Checked;
+        AnCustomer.EmailOptIn = chkEmailOptIn.Checked;
 
 
         //store the Customer in the session object
