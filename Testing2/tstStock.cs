@@ -44,16 +44,16 @@ namespace Testing2
 
 
         [TestMethod]
-        public void CarIdPropertyOK()
+        public void CarIDPropertyOK()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //create some test data to assign to the property
             Int32 TestData = 1;
             //assign the data to the property
-            AStock.CarId = TestData;
+            AStock.CarID = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AStock.CarId, TestData);
+            Assert.AreEqual(AStock.CarID, TestData);
         }
 
         [TestMethod]
