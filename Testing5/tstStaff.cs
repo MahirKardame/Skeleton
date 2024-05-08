@@ -7,6 +7,8 @@ namespace Testing5
     [TestClass]
     public class tstStaff
     {
+        /******************INSTANCE OF THE CLASS TEST******************/
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -16,6 +18,8 @@ namespace Testing5
             //test to see that it exists
             Assert.IsNotNull(Staff);
         }
+        /******************PROPERTY OK TESTS******************/
+
         [TestMethod]
         public void isAdminOK()
         {
@@ -26,10 +30,10 @@ namespace Testing5
             Boolean TestData = true;
 
             //assign the data to the property
-            Staff.IsAdmin = TestData;
+            Staff.isAdmin = TestData;
 
             //test to see that the two value are equal
-            Assert.AreEqual(TestData, Staff.IsAdmin);
+            Assert.AreEqual(TestData, Staff.isAdmin);
         }
 
         [TestMethod]
@@ -132,6 +136,216 @@ namespace Testing5
             //test to see that the two value are equal
             Assert.AreEqual(TestData, Staff.staffAddress);
 
+        }
+        /******************FIND METHOD TEST******************/
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+
+            //create a Boolean to store the result of the validation
+            Boolean found = false;
+
+            //create some test data to use with the method
+            Int32 staffID = 2;
+
+            //invoke the method
+            found = Staff.Find(staffID);
+
+            //test to see if the result is found
+            Assert.IsTrue(found);
+        }
+        /******************PROPERTY DATA TESTS******************/
+
+        [TestMethod]
+        public void TestStaffIdFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+
+            //create a Boolean to store the result of the validation
+            Boolean found = false;
+
+            //create a Boolean to record if the data is OK (assumes it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 staffID = 2;
+
+            //invoke the method
+            found = Staff.Find(staffID);
+
+            //check the staffId
+            if (Staff.staffId != 2)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffNameFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+
+            //create a Boolean to store the result of the validation
+            Boolean found = false;
+
+            //create a Boolean to record if the data is OK (assumes it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 staffID = 2;
+
+            //invoke the method
+            found = Staff.Find(staffID);
+
+            //check the staffId
+            if (Staff.staffName != "Joe")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestJobTitleFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+
+            //create a Boolean to store the result of the validation
+            Boolean found = false;
+
+            //create a Boolean to record if the data is OK (assumes it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 staffID = 2;
+
+            //invoke the method
+            found = Staff.Find(staffID);
+
+            //check the staffId
+            if (Staff.jobTitle != "cleaner")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffEmailFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+
+            //create a Boolean to store the result of the validation
+            Boolean found = false;
+
+            //create a Boolean to record if the data is OK (assumes it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 staffID = 2;
+
+            //invoke the method
+            found = Staff.Find(staffID);
+
+            //check the staffId
+            if (Staff.staffEmail != "joe@work.com")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffAddressFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+
+            //create a Boolean to store the result of the validation
+            Boolean found = false;
+
+            //create a Boolean to record if the data is OK (assumes it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 staffID = 2;
+
+            //invoke the method
+            found = Staff.Find(staffID);
+
+            //check the staffId
+            if (Staff.staffAddress != "1 main street")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDateJoinedFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+
+            //create a Boolean to store the result of the validation
+            Boolean found = false;
+
+            //create a Boolean to record if the data is OK (assumes it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 staffID = 2;
+
+            //invoke the method
+            found = Staff.Find(staffID);
+
+            //check the staffId
+            if (Staff.dateJoined != Convert.ToDateTime("01/01/2024"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestIsAdminFound()
+        {
+            //create an instance of the class we want to create
+            clsStaff Staff = new clsStaff();
+
+            //create a Boolean to store the result of the validation
+            Boolean found = false;
+
+            //create a Boolean to record if the data is OK (assumes it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 staffID = 2;
+
+            //invoke the method
+            found = Staff.Find(staffID);
+
+            //check the staffId
+            if (Staff.isAdmin != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
         }
     }
 }
