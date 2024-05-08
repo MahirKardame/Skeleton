@@ -106,5 +106,159 @@ namespace Testing3
             // test to see that the two values are the same
             Assert.AreEqual(AnOrder.OrderID, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            // Create an instance of the class we want to create.
+            clsOrder AnOrder = new clsOrder();
+            // Create a Boolean variable to store the results of the validation.
+            Boolean Found = false;
+            // Create a Boolean Variable to record if the data is OK (assume it is).
+            Boolean dataOK = true;
+            // Create some test data to use with the method.
+            Int32 OrderID = 21;
+            // Invoke the method.
+            Found = AnOrder.Find(OrderID);
+            // Check the Order ID.
+            if (AnOrder.OrderID != 21) 
+            {
+                dataOK = false;
+            }
+            // Test to see if the result is true.
+            Assert.IsTrue(dataOK);
+        }
+
+        [TestMethod]
+        public void TestIsPaidOK()
+        {
+            // Create an instance of the class we want to create.
+            clsOrder AnOrder = new clsOrder();
+            // Create a Boolean variable to store the results of the validation.
+            Boolean Found = false;
+            // Create a Boolean Variable to record if the data is OK (assume it is).
+            Boolean dataOK = true;
+            // Create some test data to use with the method.
+            Int32 OrderID = 21;
+            // Invoke the method.
+            Found = AnOrder.Find(OrderID);
+            // Check isPaid.
+            if (AnOrder.IsPaid != true)
+            {
+                dataOK = false;
+            }
+            // Test to see if the result is true.
+            Assert.IsTrue(dataOK);
+        }
+
+        [TestMethod]
+        public void TestDateOrderPlacedOK()
+        {
+            // Create an instance of the class we want to create.
+            clsOrder AnOrder = new clsOrder();
+            // Create a Boolean variable to store the results of the validation.
+            Boolean Found = false;
+            // Create a Boolean Variable to record if the data is OK (assume it is).
+            Boolean dataOK = true;
+            // Create some test data to use with the method.
+            Int32 OrderID = 21;
+            // Invoke the method.
+            Found = AnOrder.Find(OrderID);
+            // Check the DateOrderPlaced.
+            if (AnOrder.DateOrderPlaced != Convert.ToDateTime("08/05/2024"))
+            {
+                dataOK = false;
+            }
+            // Test to see if the result is true.
+            Assert.IsTrue(dataOK);
+        }
+
+        [TestMethod]
+        public void TestDeliveryTypeOK()
+        {
+            // Create an instance of the class we want to create.
+            clsOrder AnOrder = new clsOrder();
+            // Create a Boolean variable to store the results of the validation.
+            Boolean Found = false;
+            // Create a Boolean Variable to record if the data is OK (assume it is).
+            Boolean dataOK = true;
+            // Create some test data to use with the method.
+            Int32 OrderID = 21;
+            // Invoke the method.
+            Found = AnOrder.Find(OrderID);
+            // Check the DeliveryType.
+            if (AnOrder.DeliveryType != "Express")
+            {
+                dataOK = false;
+            }
+            // Test to see if the result is true.
+            Assert.IsTrue(dataOK);
+        }
+
+        [TestMethod]
+        public void TestOrderPriceOK()
+        {
+            // Create an instance of the class we want to create.
+            clsOrder AnOrder = new clsOrder();
+            // Create a Boolean variable to store the results of the validation.
+            Boolean Found = false;
+            // Create a Boolean Variable to record if the data is OK (assume it is).
+            Boolean dataOK = true;
+            // Create some test data to use with the method.
+            Int32 OrderID = 21;
+            // Invoke the method.
+            Found = AnOrder.Find(OrderID);
+            // Check the OrderPrice.
+            if (AnOrder.OrderPrice != 10000)
+            {
+                dataOK = false;
+            }
+            // Test to see if the result is true.
+            Assert.IsTrue(dataOK);
+        }
+
+        [TestMethod]
+        public void TestStaffNoteOK()
+        {
+            // Create an instance of the class we want to create.
+            clsOrder AnOrder = new clsOrder();
+            // Create a Boolean variable to store the results of the validation.
+            Boolean Found = false;
+            // Create a Boolean Variable to record if the data is OK (assume it is).
+            Boolean dataOK = true;
+            // Create some test data to use with the method.
+            Int32 OrderID = 21;
+            // Invoke the method.
+            Found = AnOrder.Find(OrderID);
+            // Check the Order ID.
+            if (AnOrder.StaffNote != "Staff note.")
+            {
+                dataOK = false;
+            }
+            // Test to see if the result is true.
+            Assert.IsTrue(dataOK);
+        }
+
+        [TestMethod]
+        public void TestCustomerNoteOK()
+        {
+            // Create an instance of the class we want to create.
+            clsOrder AnOrder = new clsOrder();
+            // Create a Boolean variable to store the results of the validation.
+            Boolean Found = false;
+            // Create a Boolean Variable to record if the data is OK (assume it is).
+            Boolean dataOK = true;
+            // Create some test data to use with the method.
+            Int32 OrderID = 21;
+            // Invoke the method.
+            Found = AnOrder.Find(OrderID);
+            // Check the Order ID.
+            if (AnOrder.CustomerNote != "Customer note.")
+            {
+                dataOK = false;
+            }
+            // Test to see if the result is true.
+            Assert.IsTrue(dataOK);
+        }
     }
 }
