@@ -21,8 +21,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsSupplier AnSupplier = new clsSupplier();
         //capture the All data
         AnSupplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
-        AnSupplier.Name = txtName.Text;
-        AnSupplier.Email = txtEmail.Text;
+        AnSupplier.SupplierName = txtSupplierName.Text;
+        AnSupplier.SupplierEmail = txtSupplierEmail.Text;
         AnSupplier.PhoneNumber = txtPhoneNumber.Text;
         AnSupplier.Address = txtAddress.Text;
         AnSupplier.LastOrderDate = Convert.ToDateTime(DateTime.Now);
@@ -35,16 +35,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
     protected void txtSupplierId_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void txtName_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void txtEmail_TextChanged(object sender, EventArgs e)
     {
 
     }
@@ -65,6 +55,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
     protected void chkAvailable_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtSupplierName_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+
+    protected void txtSupplierName_TextChanged1(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtSupplierEmail_TextChanged(object sender, EventArgs e)
     {
 
     }
