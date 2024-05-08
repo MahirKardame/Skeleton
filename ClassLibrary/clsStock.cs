@@ -6,7 +6,7 @@ namespace ClassLibrary
     {
         public bool Active { get; set; }
         public DateTime DateAdded { get; set; }
-        public int CarId { get; set; }
+        public int CarID { get; set; }
         public int StockTotal { get; set; }
         public string CarColour { get; set; }
         public string CarModel { get; set; }
