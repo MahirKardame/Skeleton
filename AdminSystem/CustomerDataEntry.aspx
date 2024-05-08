@@ -21,7 +21,8 @@
             &nbsp;</p>
         <asp:Label ID="lblFullName" runat="server" style="z-index: 1; left: 10px; top: 97px; position: absolute" Text="Full name"></asp:Label>
         <p>
-            &nbsp;</p>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 460px; top: 64px; position: absolute" Text="Find" />
+        </p>
         <asp:TextBox ID="txtFullName" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; left: 129px; top: 85px; position: absolute; margin-top: 13px" width="168px"></asp:TextBox>
         <p>
             <asp:Label ID="lblCustomerEmail" runat="server" style="z-index: 1; left: 16px; top: 157px; position: absolute" Text="Customer Email" width="78px"></asp:Label>
