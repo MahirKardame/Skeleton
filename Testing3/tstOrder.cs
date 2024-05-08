@@ -43,16 +43,16 @@ namespace Testing3
         }
 
         [TestMethod]
-        public void DateOrderPaidPropertyOK()
+        public void DeliveryTypePropertyOK()
         {
             // Create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             // Create some test data to assign to the property
-            DateTime TestData = DateTime.Now.Date;
+            string TestData = "Express";
             // Assign the data to the property
-            AnOrder.DateOrderPaid = TestData;
+            AnOrder.DeliveryType = TestData;
             // test to see that the two values are the same
-            Assert.AreEqual(AnOrder.DateOrderPaid, TestData);
+            Assert.AreEqual(AnOrder.DeliveryType, TestData);
         }
 
         [TestMethod]
