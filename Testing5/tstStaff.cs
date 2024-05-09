@@ -340,7 +340,7 @@ namespace Testing5
             found = Staff.Find(staffID);
 
             //check the staffId
-            if (Staff.isAdmin != true)
+            if (Staff.isAdmin != false)
             {
                 OK = false;
             }
