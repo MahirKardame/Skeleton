@@ -112,16 +112,32 @@ namespace ClassLibrary
 
         public bool Find(int orderID)
         {
-            // Set the private data members to the test data value.
-            privIsPaid = true;
-            privDateOrderPlaced = Convert.ToDateTime("08/05/2024");
-            privDeliveryType = "Express";
-            privOrderPrice = 10000;
-            privStaffNote = "Staff note.";
-            privCustomerNote = "Customer note.";
-            privOrderID = 21;
-            // Always return true.
-            return true;
+            /* New Code */
+            // Create an instance of the data connection.
+            clsDataConnection sqlDB = new clsDataConnection();
+            // Add the parameter for the orderID to search for.
+            sqlDB.AddParameter("@OrderID", orderID);
+            // Execute stored proceedure.
+            sqlDB.Execute("sproc_tblOrder_FilterByOrderID");
+            // If one record found (zero or one only)
+            if (sqlDB.Count == 1)
+            {
+                // Copy the data from the database to the private data members
+                privOrderID = Convert.ToInt32(sqlDB.DataTable.Rows[0]["OrderID"]);
+                privIsPaid = Convert.ToBoolean(sqlDB.DataTable.Rows[0]["IsPaid"]);
+                privDateOrderPlaced = Convert.ToDateTime(sqlDB.DataTable.Rows[0]["DateOrderPlaced"]);
+                privDeliveryType = Convert.ToString(sqlDB.DataTable.Rows[0]["DeliveryType"]);
+                privOrderPrice = Convert.ToInt32(sqlDB.DataTable.Rows[0]["OrderPrice"]);
+                privStaffNote = Convert.ToString(sqlDB.DataTable.Rows[0]["StaffNote"]);
+                privCustomerNote = Convert.ToString(sqlDB.DataTable.Rows[0]["CustomerNote"]);
+                // Return true as successful.
+                return true;
+            }
+            else 
+            {
+                // Return false if problems.
+                return false;
+            }
         }
     }
 }

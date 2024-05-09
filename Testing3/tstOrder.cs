@@ -117,11 +117,11 @@ namespace Testing3
             // Create a Boolean Variable to record if the data is OK (assume it is).
             Boolean dataOK = true;
             // Create some test data to use with the method.
-            Int32 OrderID = 21;
+            Int32 OrderID = 1;
             // Invoke the method.
             Found = AnOrder.Find(OrderID);
             // Check the Order ID.
-            if (AnOrder.OrderID != 21) 
+            if (AnOrder.OrderID != 1) 
             {
                 dataOK = false;
             }
@@ -139,7 +139,7 @@ namespace Testing3
             // Create a Boolean Variable to record if the data is OK (assume it is).
             Boolean dataOK = true;
             // Create some test data to use with the method.
-            Int32 OrderID = 21;
+            Int32 OrderID = 1;
             // Invoke the method.
             Found = AnOrder.Find(OrderID);
             // Check isPaid.
@@ -161,11 +161,11 @@ namespace Testing3
             // Create a Boolean Variable to record if the data is OK (assume it is).
             Boolean dataOK = true;
             // Create some test data to use with the method.
-            Int32 OrderID = 21;
+            Int32 OrderID = 1;
             // Invoke the method.
             Found = AnOrder.Find(OrderID);
             // Check the DateOrderPlaced.
-            if (AnOrder.DateOrderPlaced != Convert.ToDateTime("08/05/2024"))
+            if (AnOrder.DateOrderPlaced != Convert.ToDateTime("01/05/2024"))
             {
                 dataOK = false;
             }
@@ -183,7 +183,7 @@ namespace Testing3
             // Create a Boolean Variable to record if the data is OK (assume it is).
             Boolean dataOK = true;
             // Create some test data to use with the method.
-            Int32 OrderID = 21;
+            Int32 OrderID = 1;
             // Invoke the method.
             Found = AnOrder.Find(OrderID);
             // Check the DeliveryType.
@@ -205,11 +205,11 @@ namespace Testing3
             // Create a Boolean Variable to record if the data is OK (assume it is).
             Boolean dataOK = true;
             // Create some test data to use with the method.
-            Int32 OrderID = 21;
+            Int32 OrderID = 1;
             // Invoke the method.
             Found = AnOrder.Find(OrderID);
             // Check the OrderPrice.
-            if (AnOrder.OrderPrice != 10000)
+            if (AnOrder.OrderPrice != 34000)
             {
                 dataOK = false;
             }
@@ -227,7 +227,7 @@ namespace Testing3
             // Create a Boolean Variable to record if the data is OK (assume it is).
             Boolean dataOK = true;
             // Create some test data to use with the method.
-            Int32 OrderID = 21;
+            Int32 OrderID = 1;
             // Invoke the method.
             Found = AnOrder.Find(OrderID);
             // Check the Order ID.
@@ -249,7 +249,7 @@ namespace Testing3
             // Create a Boolean Variable to record if the data is OK (assume it is).
             Boolean dataOK = true;
             // Create some test data to use with the method.
-            Int32 OrderID = 21;
+            Int32 OrderID = 1;
             // Invoke the method.
             Found = AnOrder.Find(OrderID);
             // Check the Order ID.
