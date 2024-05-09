@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,7 +14,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
-   
+
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
@@ -65,13 +66,37 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
 
+    protected void txtSupplierEmail_TextChanged(object sender, EventArgs e)
+    {
+
+    }
     protected void txtSupplierName_TextChanged1(object sender, EventArgs e)
     {
 
     }
 
-    protected void txtSupplierEmail_TextChanged(object sender, EventArgs e)
+    protected void btnFind_Click(object sender, EventArgs e)
     {
-
+        //create an instance of the supplier class
+        clsSupplier AnSupplier = new clsSupplier();
+        //create a variable to store the primary key
+        Int32 SupplierId;
+        //create a variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        SupplierId = Convert.ToInt32(txtSupplierId.Text);
+        //find the record
+        Found = AnSupplier.Find(SupplierId);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the supplier in the form
+            txtSupplierName.Text = AnSupplier.SupplierName;
+            txtSupplierEmail.Text = AnSupplier.SupplierEmail;
+            txtPhoneNumber.Text = AnSupplier.PhoneNumber;
+            txtAddress.Text = AnSupplier.Address;
+            txtLastOrderDate.Text = AnSupplier.LastOrderDate.ToString();
+            chkAvailable.Checked = AnSupplier.Available;
+        }
     }
 }

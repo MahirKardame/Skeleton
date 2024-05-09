@@ -121,7 +121,7 @@ namespace Testing1
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 20;
             //invoke the method 
             Found = AnSupplier.Find(SupplierId);
             //test to see  if the result is true
@@ -140,11 +140,11 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 20;
             //invoke the method 
             Found = AnSupplier.Find(SupplierId);
             //check the Supplier id  of the supplier
-            if (AnSupplier.SupplierId != 21)
+            if (AnSupplier.SupplierId != 20)
             {
                 OK = false;
             }
@@ -162,11 +162,11 @@ namespace Testing1
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 20;
             //invoke the method
             Found = AnSupplier.Find(SupplierId);
             //check the last order date added to the supplier
-            if (AnSupplier.LastOrderDate != Convert.ToDateTime("23/12/2022"))
+            if (AnSupplier.LastOrderDate != Convert.ToDateTime("01/05/2024"))
             {
                 OK = false;
             }
@@ -184,11 +184,11 @@ namespace Testing1
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 20;
             //invoke the method
             Found = AnSupplier.Find(SupplierId);
             //check the supplier name 
-            if (AnSupplier.SupplierName != "Name")
+            if (AnSupplier.SupplierName != "Audi")
             {
                 OK = false;
             }
@@ -206,11 +206,11 @@ namespace Testing1
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 20;
             //invoke the method
             Found = AnSupplier.Find(SupplierId);
             //check the email of the supplier
-            if (AnSupplier.SupplierEmail != "MyEmail@Email.com")
+            if (AnSupplier.SupplierEmail != "audi@gmail.com")
             {
                 OK = false;
             }
@@ -228,11 +228,11 @@ namespace Testing1
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 20;
             //invoke the method
             Found = AnSupplier.Find(SupplierId);
             //check the phone number of supplier
-            if (AnSupplier.PhoneNumber != "00000000000")
+            if (AnSupplier.PhoneNumber != "01234567890")
             {
                 OK = false;
             }
@@ -250,11 +250,11 @@ namespace Testing1
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 20;
             //invoke the method
             Found = AnSupplier.Find(SupplierId);
             //check the Address of supplier
-            if (AnSupplier.Address != "Address, PostCode")
+            if (AnSupplier.Address != "Leicester LE4 0AH")
             {
                 OK = false;
             }
@@ -272,7 +272,7 @@ namespace Testing1
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 SupplierId = 21;
+            Int32 SupplierId = 20;
             //invoke the method
             Found = AnSupplier.Find(SupplierId);
             //check the active property

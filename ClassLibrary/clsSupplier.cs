@@ -136,16 +136,34 @@ namespace ClassLibrary
 
         public bool Find(int supplierId)
         {
-            //set the private data member to the test data value
-            mSupplierId = 21;
-            mLastOrderDate = Convert.ToDateTime("23/12/2022");
-            mSupplierName = "Name";
-            mSupplierEmail = "MyEmail@Email.com";
-            mPhoneNumber = "00000000000";
-            mAddress = "Address, PostCode";
-            mAvailable = true;
-            //always return ture
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the supplier id to search for
+            DB.AddParameter("@SupplierId", supplierId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblSupplier_FilterBySupplierId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data member
+                mSupplierId = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierId"]);
+                mLastOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["LastOrderDate"]);
+                mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
+                mSupplierEmail = Convert.ToString(DB.DataTable.Rows[0]["SupplierEmail"]);
+                mPhoneNumber = Convert.ToString(DB.DataTable.Rows[0]["PhoneNumber"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                mAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Available"]);
+                //always return ture
+                return true;
+            }
+
+            //if no record was found
+            else
+            {
+
+                //return false indicating there is a problem
+                return false;
+            }
         } 
     }
 }
