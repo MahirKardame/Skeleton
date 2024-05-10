@@ -154,6 +154,95 @@ namespace ClassLibrary
             }
         }
 
-        
+        public string Valid(string FullName, string CustomerEmail, string CustomerPhone, string Address, string RegistrationDate)
+        {
+            //create a string variable to store the error
+            String Error = "";
+
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+
+            //if the FullName is Blank
+            if (FullName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Full Name may not be blank : ";
+            }
+            //if the full name number is greater than 20 characters
+            if (FullName.Length > 20)
+            {
+                //record the error 
+                Error = Error + "The Full Name must be less than 20 characters : ";
+            }
+
+            //create an instance of DateTime to compare with DateTemp
+            //in the if statements
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
+                //copy the RegistrationDate value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(RegistrationDate);
+
+                if (DateTemp < DateTime.Now.Date) //compare RegistrationDate with Date
+                {
+                    //record the error
+                    Error = Error + "The Registration Date cannot be in the past : ";
+                }
+                //check to see if the date is greater than todays date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + " The date cannot be in the future : ";
+                }
+
+            }
+            catch
+            {
+                //return any error messages
+                return Error;
+
+            }
+
+            //if the address is blank
+            if (CustomerPhone.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Full Name may not be blank : ";
+            }
+            //if the Address is too long
+            if (CustomerPhone.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Full Name may not be blank : ";
+            }
+
+            //if the address is blank
+            if (CustomerEmail.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Full Name may not be blank : ";
+            }
+            //if the Address is too long
+            if (CustomerEmail.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Full Name may not be blank : ";
+            }
+
+            //if the address is blank
+            if (Address.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Full Name may not be blank : ";
+            }
+            //if the Address is too long
+            if (Address.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Full Name may not be blank : ";
+            }
+            // Return empty string if there are no errors
+            return Error;
+        }
     }
 }
