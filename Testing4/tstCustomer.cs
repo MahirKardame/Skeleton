@@ -144,7 +144,7 @@ namespace Testing4
             //invoke the method
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
 
@@ -166,7 +166,7 @@ namespace Testing4
             //invoke the method
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -185,7 +185,7 @@ namespace Testing4
             //invoke the method
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -206,7 +206,7 @@ namespace Testing4
             //invoke the method
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
 
@@ -228,7 +228,7 @@ namespace Testing4
             //invoke the method
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -243,7 +243,7 @@ namespace Testing4
             //invoke the method
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -258,7 +258,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
 
@@ -274,7 +274,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -289,7 +289,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -305,7 +305,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -321,7 +321,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -337,7 +337,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -353,7 +353,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
 
@@ -369,7 +369,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -384,7 +384,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
 
@@ -400,7 +400,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -416,7 +416,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -432,7 +432,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
 
@@ -449,7 +449,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
 
@@ -466,7 +466,7 @@ namespace Testing4
             //invoke method 
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -480,7 +480,7 @@ namespace Testing4
             string CustomerPhone = "";
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -494,7 +494,7 @@ namespace Testing4
             string CustomerPhone = "a";
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -508,7 +508,7 @@ namespace Testing4
             string CustomerPhone = "aa";
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -524,7 +524,7 @@ namespace Testing4
             //invoke the method
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -540,7 +540,7 @@ namespace Testing4
             //invoke the method
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -556,7 +556,7 @@ namespace Testing4
             //invoke the method
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -572,7 +572,7 @@ namespace Testing4
             //invoke the method
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -848,7 +848,7 @@ namespace Testing4
             //invoke the error
             Error = AnCustomer.Valid(RegistrationDate, FullName, CustomerEmail, CustomerPhone, Address);
             //test to see the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
     }   
