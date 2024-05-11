@@ -26,25 +26,45 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
         //capture the Fullname 
-        AnCustomer.FullName = txtFullName.Text;
+        String FullName = txtFullName.Text;
         //capture the Customer Email
-        AnCustomer.CustomerEmail = txtCustomerEmail.Text;
+        String CustomerEmail = txtCustomerEmail.Text;
         //capture the Customer Phone Number
-        AnCustomer.CustomerPhone = txtCustomerPhone.Text;
+        String CustomerPhone = txtCustomerPhone.Text;
         //capture the Customer Address
-        AnCustomer.Address = txtAddress.Text;
+        String Address = txtAddress.Text;
         //capture the Registration Date
-        AnCustomer.RegistrationDate = Convert.ToDateTime(DateTime.Now);    
+        String RegistrationDate = txtRegistrationDate.Text;    
         //Capture Email Opt In check box
-        AnCustomer.EmailOptIn = chkEmailOptIn.Checked;
+        String EmailOptIn = chkEmailOptIn.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data 
+        Error = AnCustomer.Valid(FullName, CustomerEmail, CustomerPhone, Address, RegistrationDate);
+        if (Error == "")
+        {
+            //capture the FullName
+            AnCustomer.FullName = FullName;
+            //capture the CustomerEmail
+            AnCustomer.CustomerEmail = CustomerEmail;
+            //capture the CustomerPhone
+            AnCustomer.CustomerPhone = CustomerPhone;
+            //capture the Address
+            AnCustomer.Address = Address;
+            //capture the RegistrationDate
+            AnCustomer.RegistrationDate = Convert.ToDateTime(RegistrationDate);
+            //store the Customer in the session object
+            Session["AnCustomer"] = AnCustomer;
+            //navigate to the view page
+            Response.Redirect("CustomerViewer.aspx");
 
-
-        //store the Customer in the session object
-        Session["anCustomer"] = AnCustomer;
-        //navigate to the view page
-        Response.Redirect("CustomerViewer.aspx");
-
-        
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
+ 
     }
 
 
@@ -75,6 +95,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         
 
 
+
+    }
+
+    protected void chkEmailOptIn_CheckedChanged(object sender, EventArgs e)
+    {
 
     }
 }

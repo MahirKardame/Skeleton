@@ -40,7 +40,7 @@
         <p>
             &nbsp;</p>
         <asp:TextBox ID="txtRegistrationDate" runat="server" style="z-index: 1; left: 129px; top: 370px; position: absolute" width="168px"></asp:TextBox>
-        <asp:CheckBox ID="chkEmailOptIn" runat="server" style="z-index: 1; left: 133px; top: 424px; position: absolute" Text="EmailOptIn" width="168px" />
+        <asp:CheckBox ID="chkEmailOptIn" runat="server" style="z-index: 1; left: 133px; top: 424px; position: absolute" Text="EmailOptIn" width="168px" OnCheckedChanged="chkEmailOptIn_CheckedChanged" />
         <p>
             &nbsp;</p>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 9px; top: 464px; position: absolute; right: 527px"></asp:Label>

@@ -132,7 +132,7 @@ namespace ClassLibrary
             DB.AddParameter("@CustomerID", CustomerID);
             //execute the stored procedure
             DB.Execute("sproc_tblCustomer_FilterByCustomerID");
-            //if one record is found (there should be either one or zero
+            //if one record is found (there should be either one or zero)
             if (DB.Count == 1)
             {
                 //copy the data from the database to the private data members
@@ -192,54 +192,55 @@ namespace ClassLibrary
                 if (DateTemp > DateTime.Now.Date)
                 {
                     //record the error
-                    Error = Error + " The date cannot be in the future : ";
+                    Error = Error + " The Registration Date cannot be in the future : ";
                 }
 
             }
             catch
             {
                 //return any error messages
-                return Error;
+                //return Error;
+                Error = Error + "The Registration Date was not a valid date :";
 
             }
 
-            //if the address is blank
+            //if the Phone Number is blank
             if (CustomerPhone.Length == 0)
             {
                 //record the error
-                Error = Error + "The Full Name may not be blank : ";
+                Error = Error + "The Phone Number may not be left as blank : ";
             }
-            //if the Address is too long
+            //if the Phone Number is too long
             if (CustomerPhone.Length > 50)
             {
                 //record the error
-                Error = Error + "The Full Name may not be blank : ";
+                Error = Error + "The Phone Number must be less than 50 characters : ";
             }
 
-            //if the address is blank
+            //if the Email is blank
             if (CustomerEmail.Length == 0)
             {
                 //record the error
-                Error = Error + "The Full Name may not be blank : ";
+                Error = Error + "The Email may not be blank : ";
             }
-            //if the Address is too long
+            //if the Email is too long
             if (CustomerEmail.Length > 50)
             {
                 //record the error
-                Error = Error + "The Full Name may not be blank : ";
+                Error = Error + "The Email must be less than 50 characters: ";
             }
 
             //if the address is blank
             if (Address.Length == 0)
             {
                 //record the error
-                Error = Error + "The Full Name may not be blank : ";
+                Error = Error + "The Address may not be blank : ";
             }
             //if the Address is too long
             if (Address.Length > 50)
             {
                 //record the error
-                Error = Error + "The Full Name may not be blank : ";
+                Error = Error + "The Address must be less than 20 characters : ";
             }
             // Return empty string if there are no errors
             return Error;
