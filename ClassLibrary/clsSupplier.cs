@@ -164,6 +164,92 @@ namespace ClassLibrary
                 //return false indicating there is a problem
                 return false;
             }
-        } 
+        }
+
+        public string Valid(string supplierName, string supplierEmail, string phoneNumber, string address, string lastOrderDate)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store the data values
+            DateTime DateTemp;
+            //if the SupplierName is blank
+            if (supplierName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The supplier name may be blank : ";
+            }
+            //if the supplier name is greater than 30 characters
+            if (supplierName.Length > 30)
+            {
+                //record the error
+                Error = Error + "The supplier name must be less then 30 characters : ";
+            }
+
+            //create an instance of DateTime to compare with DateTemp
+            //in the if statement
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
+                //copy the lastOrderDate value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(lastOrderDate);
+                if (DateTemp < DateComp) //compare lastOrderDate with Date
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            //is the supplier email blank
+            if (supplierEmail.Length == 0)
+            {
+                //record the error
+                Error = Error + "The supplier email may not be blank : ";
+            }
+            //if the supplier email is too long
+            if (supplierEmail.Length > 70)
+            {
+                //record the error
+                Error = Error + "The supplier email must be less than 70 characters : ";
+            }
+
+            //is the phone number blank
+            if (phoneNumber.Length == 0)
+            {
+                //record the error
+                Error = Error + "The phone number may not be blank : ";
+            }
+            //if the phone number is too long
+            if (phoneNumber.Length > 15)
+            {
+                //record the error
+                Error = Error + "This phone number must be less than 15 characters : ";
+            }
+
+            //is the address blank
+            if (address.Length == 0)
+            {
+                //record the error
+                Error = Error + "The address may not be blank : ";
+            }
+            //if the address is too long
+            if (address.Length > 150)
+            {
+                //record the error
+                Error = Error + "The address must be less than 150 characters : ";
+            }
+            //return any error messages
+            return Error;  
+        }
     }
 }

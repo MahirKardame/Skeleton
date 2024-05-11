@@ -34,47 +34,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("SupplierViewer.aspx");
     }
 
-
-    protected void txtSupplierId_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void txtPhoneNumber_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void txtAddress_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void txtLastOrderDate_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void chkAvailable_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void txtSupplierName_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-
-    protected void txtSupplierEmail_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-    protected void txtSupplierName_TextChanged1(object sender, EventArgs e)
-    {
-
-    }
-
     protected void btnFind_Click(object sender, EventArgs e)
     {
         //create an instance of the supplier class
