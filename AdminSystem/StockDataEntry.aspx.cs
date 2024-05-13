@@ -30,7 +30,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the car id
         AStock.CarID = Convert.ToInt16(txtCarID.Text);
         //capture the stock total
-        AStock.StockTotal = Convert.ToInt16(txtTotalStock.Text);
+        AStock.StockTotal = Convert.ToInt16(txtStockTotal.Text);
         //capture the car model
         AStock.CarModel = txtCarModel.Text;
         //capture the car colour
@@ -45,5 +45,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["AStock"] = AStock;
         //navigate to the view page
         Response.Redirect("StockViewer.aspx");
+    }
+
+
+
+    //BtnFind
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address class
+        clsStock AStock = new clsStock();
+        //create a variable to store the primary key
+        Int32 CarID;
+        //create a variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        CarID = Convert.ToInt32(txtCarID.Text);
+        //find the record
+        Found = AStock.Find(CarID);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtStockTotal.Text = AStock.StockTotal.ToString();
+            txtCarModel.Text = AStock.CarModel;
+            txtCarColour.Text = AStock.CarColour;
+            txtCarBrand.Text = AStock.CarBrand;
+            txtStockArriveDate.Text = AStock.StockArriveDate.ToString();
+            chkStockAvailable.Checked = AStock.StockAvailable;
+        }
     }
 }

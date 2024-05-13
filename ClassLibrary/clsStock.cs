@@ -135,18 +135,36 @@ namespace ClassLibrary
         public bool Active { get; set; }
         public DateTime DateAdded { get; set; }
 
-        public bool Find(int carID)
+        public bool Find(int CarID)
         {
-            //set the private data members to the test data value
-            mCarID = 21;
-            mStockTotal = 30;
-            mCarModel = "r8";
-            mCarColour = "blue";
-            mCarBrand = "audi";
-            mStockAvailable = true;
-            mStockArriveDate = Convert.ToDateTime("23/12/2022");
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the CarID to search for
+            DB.AddParameter("@CarID", CarID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByCarID");
+            //if one record is found (there should be either one or zerp)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mCarID = Convert.ToInt32(DB.DataTable.Rows[0]["CarID"]);
+                mStockTotal = Convert.ToInt32(DB.DataTable.Rows[0]["StockTotal"]);
+                mCarModel = Convert.ToString(DB.DataTable.Rows[0]["CarModel"]);
+                mCarColour = Convert.ToString(DB.DataTable.Rows[0]["CarColour"]);
+                mCarBrand = Convert.ToString(DB.DataTable.Rows[0]["CarBrand"]);
+                mStockAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["StockAvailable"]);
+                mStockArriveDate = Convert.ToDateTime(DB.DataTable.Rows[0]["StockArriveDate"]);
+                //return that everthing worked ok
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
+            
+            
         }
     }
 }

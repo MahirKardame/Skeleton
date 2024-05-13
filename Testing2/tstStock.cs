@@ -142,7 +142,7 @@ namespace Testing2
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 CarID = 21;
+            Int32 CarID = 1;
             //invoke the method
             Found = AStock.Find(CarID);
             //test to see if the result is true
@@ -159,11 +159,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CarID = 21;
+            Int32 CarID = 1;
             //invoke the method
             Found = AStock.Find(CarID);
             //check the car id
-            if (AStock.CarID != 21)
+            if (AStock.CarID != 1)
             {
                 OK = false;
             }
@@ -181,11 +181,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CarID = 21;
+            Int32 CarID = 1;
             //invoke the method
             Found = AStock.Find(CarID);
             //check the stock total
-            if (AStock.StockTotal != 30)
+            if (AStock.StockTotal != 12)
             {
                 OK = false;
             }
@@ -203,11 +203,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CarID = 21;
+            Int32 CarID = 1;
             //invoke the method
             Found = AStock.Find(CarID);
             //check the car model
-            if (AStock.CarModel != "r8")
+            if (AStock.CarModel != "Focus")
             {
                 OK = false;
             }
@@ -225,11 +225,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CarID = 21;
+            Int32 CarID = 1;
             //invoke the method
             Found = AStock.Find(CarID);
             //check the car colour
-            if (AStock.CarColour != "blue")
+            if (AStock.CarColour != "Blue")
             {
                 OK = false;
             }
@@ -247,11 +247,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CarID = 21;
+            Int32 CarID = 1;
             //invoke the method
             Found = AStock.Find(CarID);
             //check the car brand
-            if (AStock.CarBrand != "audi")
+            if (AStock.CarBrand != "Ford")
             {
                 OK = false;
             }
@@ -269,7 +269,7 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CarID = 21;
+            Int32 CarID = 1;
             //invoke the method
             Found = AStock.Find(CarID);
             //check the stock available
@@ -291,11 +291,11 @@ namespace Testing2
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CarID = 21;
+            Int32 CarID = 1;
             //invoke the method
             Found = AStock.Find(CarID);
             //check the stock arrive date
-            if (AStock.StockArriveDate != Convert.ToDateTime("23/12/2022"))
+            if (AStock.StockArriveDate != Convert.ToDateTime("12/02/2024"))
             {
                 OK = false;
             }
