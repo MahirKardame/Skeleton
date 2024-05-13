@@ -21,17 +21,36 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsSupplier
         clsSupplier AnSupplier = new clsSupplier();
         //capture the All data
-        AnSupplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
-        AnSupplier.SupplierName = txtSupplierName.Text;
-        AnSupplier.SupplierEmail = txtSupplierEmail.Text;
-        AnSupplier.PhoneNumber = txtPhoneNumber.Text;
-        AnSupplier.Address = txtAddress.Text;
-        AnSupplier.LastOrderDate = Convert.ToDateTime(DateTime.Now);
-        AnSupplier.Available = chkAvailable.Checked;
-        //store the Name in a the session object
-        Session["AnSupplier"] = AnSupplier;
-        //navigate to the view page
-        Response.Redirect("SupplierViewer.aspx");
+        string SupplierId = txtSupplierId.Text;
+        string SupplierName = txtSupplierName.Text;
+        string SupplierEmail = txtSupplierEmail.Text;
+        string PhoneNumber = txtPhoneNumber.Text;
+        string Address = txtAddress.Text;
+        string LastOrderDate = txtLastOrderDate.Text;
+        string Available = chkAvailable.Text;
+        string Error = "";
+        //validate the data
+        Error = AnSupplier.Valid(SupplierName, SupplierEmail, PhoneNumber, Address, LastOrderDate);
+        if (Error == "")
+        {
+            //capture the All data
+            AnSupplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
+            AnSupplier.SupplierName = txtSupplierName.Text;
+            AnSupplier.SupplierEmail = txtSupplierEmail.Text;
+            AnSupplier.PhoneNumber = txtPhoneNumber.Text;
+            AnSupplier.Address = txtAddress.Text;
+            AnSupplier.LastOrderDate = Convert.ToDateTime(DateTime.Now);
+            AnSupplier.Available = chkAvailable.Checked;
+            //store the Name in a the session object
+            Session["AnSupplier"] = AnSupplier;
+            //navigate to the view page
+            Response.Redirect("SupplierViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
