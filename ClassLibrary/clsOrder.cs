@@ -139,5 +139,75 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string OrderID,
+            string IsPaid,
+            string DateOrderPlaced,
+            string DeliveryType,
+            string OrderPrice,
+            string StaffNote,
+            string CustomerNote)
+        {
+            // Create a string variable to store the error.
+            String Error = "";
+
+            /* Date Tests */
+            // Create a temporary variable to store the date values.
+            DateTime DateTemp;
+            try
+            {
+                // Copy the DateOrderPlaced value to the DateTemp variable.
+                DateTemp = Convert.ToDateTime(DateOrderPlaced);
+                // Check to see if the date is less than today's date.
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    // Add error.
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                // Check to see if the date is greater than today's date.
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    // Add error.
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch // Exception not needed. 
+            {
+                // Add error.
+                Error = Error + "The date has to be a valid date type : ";
+            }
+
+            /* String Tests */
+            if (CustomerNote.Length > 50)
+            {
+                // Add error.
+                Error = Error + "The CustomerNote string may not be longer than 50 chars : ";
+            }
+
+            if (StaffNote.Length > 50)
+            {
+                // Add error.
+                Error = Error + "The StaffNote string may not be longer than 50 chars : ";
+            }
+
+            /* Integer Tests */
+            // Create a temporary variable to store the date values.
+            Int32 IntTemp;
+            // Convert the string-stored integer to an actual Int32.
+            IntTemp = Convert.ToInt32(OrderPrice);
+            if (IntTemp < 0) 
+            {
+                // Add error.
+                Error = Error + "The OrderPrice cannot be below 0 : ";
+            }
+            if (IntTemp > 15000000)
+            {
+                // Add error.
+                Error = Error + "The OrderPrice cannot exceed 15 000 000 : ";
+            }
+
+            // Return any error messages.
+            return Error;
+        }
     }
 }
