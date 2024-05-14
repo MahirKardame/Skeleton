@@ -15,18 +15,18 @@ public partial class _1Viewer : System.Web.UI.Page
         //get the data from the session object
         Staff = (clsStaff)Session["Staff"];
         //display the staff id
-        Response.Write(Staff.staffId);
+        Response.Write(Staff.StaffId);
         //display the staff name
-        Response.Write(Staff.staffName);
+        Response.Write(Staff.StaffName);
         //display the job title
-        Response.Write(Staff.jobTitle);
+        Response.Write(Staff.JobTitle);
         //display the staff email
-        Response.Write(Staff.staffEmail);
+        Response.Write(Staff.StaffEmail);
         //display the staff address
-        Response.Write(Staff.staffAddress);
+        Response.Write(Staff.StaffAddress);
         //display the date Joined
-        Response.Write(Staff.dateJoined);
+        Response.Write(Staff.DateJoined);
         //display isAdmin
-        Response.Write(Staff.isAdmin);
+        Response.Write(Staff.IsAdmin);
     }
 }
