@@ -20,19 +20,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of the staff class
         clsStaff Staff = new clsStaff();
         //capture the staffId
-        Staff.staffId = Convert.ToInt32(txtStaffId.Text);
+        Staff.StaffId = Convert.ToInt32(txtStaffId.Text);
         //capture the staffName
-        Staff.staffName = txtStaffName.Text;
+        Staff.StaffName = txtStaffName.Text;
         //capture the job title
-        Staff.jobTitle = txtJobTitle.Text;
+        Staff.JobTitle = txtJobTitle.Text;
         //capture the staff email
-        Staff.staffEmail = txtStaffEmail.Text;
+        Staff.StaffEmail = txtStaffEmail.Text;
         //capture the staff address
-        Staff.staffAddress = txtStaffAddress.Text;
+        Staff.StaffAddress = txtStaffAddress.Text;
         //capture the date joined
-        Staff.dateJoined = Convert.ToDateTime(txtDateJoined.Text);
+        Staff.DateJoined = Convert.ToDateTime(txtDateJoined.Text);
         //capture isAdmin checkbox
-        Staff.isAdmin = chkIsAdmin.Checked;
+        Staff.IsAdmin = chkIsAdmin.Checked;
         //store the name in the session object
         Session["Staff"] = Staff;
         //navigate to the view page
@@ -60,12 +60,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if(found)
         {
             //display the properties in the form
-            txtStaffName.Text = Staff.staffName;
-            txtJobTitle.Text = Staff.jobTitle;
-            txtStaffEmail.Text = Staff.staffEmail;
-            txtStaffAddress.Text = Staff.staffAddress;
-            txtDateJoined.Text = Staff.dateJoined.ToString();
-            chkIsAdmin.Checked = Staff.isAdmin;
+            txtStaffName.Text = Staff.StaffName;
+            txtJobTitle.Text = Staff.JobTitle;
+            txtStaffEmail.Text = Staff.StaffEmail;
+            txtStaffAddress.Text = Staff.StaffAddress;
+            txtDateJoined.Text = Staff.DateJoined.ToString();
+            chkIsAdmin.Checked = Staff.IsAdmin;
 
         }
     }

@@ -7,7 +7,7 @@ namespace ClassLibrary
         //private data member for staff id property
         private Int32 mStaffId;
         //staffId public property
-        public Int32 staffId
+        public Int32 StaffId
         {
             get
             {
@@ -24,7 +24,7 @@ namespace ClassLibrary
         //private data member for staff name property
         private string mStaffName;
         //staff name public property
-        public string staffName
+        public string StaffName
         {
             get
             {
@@ -41,7 +41,7 @@ namespace ClassLibrary
         //private data member for job title property
         private string mJobTitle;
         //job title public property
-        public string jobTitle
+        public string JobTitle
         {
             get
             {
@@ -58,7 +58,7 @@ namespace ClassLibrary
         //private data member for staff email property
         private string mStaffEmail;
         //staff email public property
-        public string staffEmail
+        public string StaffEmail
         {
             get
             {
@@ -75,7 +75,7 @@ namespace ClassLibrary
         //private data member for staff address property
         private string mStaffAddress;
         //staff address public property
-        public string staffAddress
+        public string StaffAddress
         {
             get
             {
@@ -92,7 +92,7 @@ namespace ClassLibrary
         //private data member for dateJoined property
         private DateTime mDateJoined;
         //dateJoined public property
-        public DateTime dateJoined
+        public DateTime DateJoined
         {
             get
             {
@@ -109,7 +109,7 @@ namespace ClassLibrary
         //private data member for isAdmin property
         private Boolean mIsAdmin;
         //isAdmin public property
-        public bool isAdmin
+        public bool IsAdmin
         {
             get
             {
@@ -151,6 +151,89 @@ namespace ClassLibrary
                 //return false indicating that there is a problem
                 return false; 
             }
+        }
+        /****** VALID METHOD ******/
+        public string Valid(string staffName, string jobTitle, string staffEmail, string staffAddress, string dateJoined)
+        {
+            //create a string to store the error message
+            String Error = "";
+            //create a temporary value to store the date value
+            DateTime DateTemp;
+
+            //if the staffName is blank
+            if(staffName.Length == 0)
+            {
+                //record the error
+                Error += "The StaffName may not be blank : ";
+            }
+            //if the staffName is greater than 25 characters
+            if (staffName.Length > 25)
+            {
+                //record the error
+                Error += "The StaffName may not be greater than 25 characters : ";
+            }
+
+            //if the jobTitle is blank
+            if (jobTitle.Length == 0)
+            {
+                //record the error
+                Error += "The JobTitle may not be blank : ";
+            }
+            //if the jobTitle is greater than 20 characters
+            if (jobTitle.Length > 20)
+            {
+                //record the error
+                Error += "The JobTitle may not be greater than 20 characters : ";
+            }
+
+            //if the staffEmail is blank
+            if (staffEmail.Length == 0)
+            {
+                //record the error
+                Error += "The StaffEmail may not be blank : ";
+            }
+            //if the staffName is greater than 35 characters
+            if (staffEmail.Length > 35)
+            {
+                //record the error
+                Error += "The StaffEmail may not be greater than 35 characters : ";
+            }
+
+            //if the staffAddress is blank
+            if (staffAddress.Length == 0)
+            {
+                //record the error
+                Error += "The StaffAddress may not be blank : ";
+            }
+            //if the staffName is greater than 50 characters
+            if (staffAddress.Length > 50)
+            {
+                //record the error
+                Error += "The StaffAddress may not be greater than 50 characters : ";
+            }
+            try
+            {//copy the dateJoined value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateJoined);
+                //check to see if the date is more than 80 years ago
+                if (DateTemp < DateTime.Now.Date.AddYears(-80))
+                {
+                    Error += "The DateJoined may not be more than 80 years ago : ";
+                }
+
+                //check to see if the date is in the future
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error += "The DateJoined may not in the future : ";
+                }
+            } catch
+            {
+                //record the error
+                Error += "invalid date : ";
+            }
+            
+
+            //return any error messages
+            return Error;
         }
     }
 }
