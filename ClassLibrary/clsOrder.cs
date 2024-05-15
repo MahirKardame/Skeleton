@@ -189,23 +189,40 @@ namespace ClassLibrary
                 // Add error.
                 Error = Error + "The StaffNote string may not be longer than 50 chars : ";
             }
+            // DeliveryType
+            switch (DeliveryType)
+            {
+                case "Slow":
+                case "Fast":
+                case "Express":
+                    break;
+                default:
+                    Error = Error + "The DeliveryType must be a valid DeliveryType : ";
+                    break;
+            }
 
             /* Integer Tests */
             // Create a temporary variable to store the date values.
             Int32 IntTemp;
             // Convert the string-stored integer to an actual Int32.
-            IntTemp = Convert.ToInt32(OrderPrice);
-            if (IntTemp < 0) 
+            try
             {
-                // Add error.
-                Error = Error + "The OrderPrice cannot be below 0 : ";
+                IntTemp = Convert.ToInt32(OrderPrice);
+                if (IntTemp < 0)
+                {
+                    // Add error.
+                    Error = Error + "The OrderPrice cannot be below 0 : ";
+                }
+                if (IntTemp > 15000000)
+                {
+                    // Add error.
+                    Error = Error + "The OrderPrice cannot exceed 15 000 000 : ";
+                }
             }
-            if (IntTemp > 15000000)
+            catch(Exception ex)
             {
-                // Add error.
-                Error = Error + "The OrderPrice cannot exceed 15 000 000 : ";
+                Error = Error + "The OrderPrice must be an integer : " + ex;
             }
-
             // Return any error messages.
             return Error;
         }
