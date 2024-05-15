@@ -53,6 +53,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.Address = Address;
             //capture the RegistrationDate
             AnCustomer.RegistrationDate = Convert.ToDateTime(RegistrationDate);
+            //capture the EmailOptIn
+            AnCustomer.EmailOptIn = chkEmailOptIn.Checked;
             //store the Customer in the session object
             Session["AnCustomer"] = AnCustomer;
             //navigate to the view page
