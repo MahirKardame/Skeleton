@@ -20,23 +20,50 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of the staff class
         clsStaff Staff = new clsStaff();
         //capture the staffId
-        Staff.StaffId = Convert.ToInt32(txtStaffId.Text);
+        int StaffId = Convert.ToInt32(txtStaffId.Text);
         //capture the staffName
-        Staff.StaffName = txtStaffName.Text;
+        string StaffName = txtStaffName.Text;
         //capture the job title
-        Staff.JobTitle = txtJobTitle.Text;
+        string JobTitle = txtJobTitle.Text;
         //capture the staff email
-        Staff.StaffEmail = txtStaffEmail.Text;
+        string StaffEmail = txtStaffEmail.Text;
         //capture the staff address
-        Staff.StaffAddress = txtStaffAddress.Text;
+        string StaffAddress = txtStaffAddress.Text;
         //capture the date joined
-        Staff.DateJoined = Convert.ToDateTime(txtDateJoined.Text);
+        string DateJoined = txtDateJoined.Text;
         //capture isAdmin checkbox
-        Staff.IsAdmin = chkIsAdmin.Checked;
-        //store the name in the session object
-        Session["Staff"] = Staff;
-        //navigate to the view page
-        Response.Redirect("StaffViewer.aspx");
+        bool IsAdmin = chkIsAdmin.Checked;
+        //validate the data
+        string Error = Staff.Valid(StaffName, JobTitle, StaffEmail, StaffAddress, DateJoined);
+        if(Error == "")
+        {
+            //capture the staffId
+            Staff.StaffId = Convert.ToInt32(txtStaffId.Text);
+            //capture the staffName
+            Staff.StaffName = txtStaffName.Text;
+            //capture the job title
+            Staff.JobTitle = txtJobTitle.Text;
+            //capture the staff email
+            Staff.StaffEmail = txtStaffEmail.Text;
+            //capture the staff address
+            Staff.StaffAddress = txtStaffAddress.Text;
+            //capture the date joined
+            Staff.DateJoined = Convert.ToDateTime(txtDateJoined.Text);
+            //capture isAdmin checkbox
+            Staff.IsAdmin = chkIsAdmin.Checked;
+
+            //store the name in the session object
+            Session["Staff"] = Staff;
+            //navigate to the view page
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            //display the error  message
+            lblError.Text = Error;
+        }
+
+
     }
 
     protected void Button1_Click(object sender, EventArgs e)
