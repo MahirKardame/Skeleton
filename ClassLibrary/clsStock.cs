@@ -166,5 +166,36 @@ namespace ClassLibrary
             
             
         }
+
+        public string Valid(string stockTotal, string carModel, string carColour, string carBrand, string stockArriveDate)
+        {
+            //create a string variable to store the error 
+            String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+            //if the StockTotal is blank
+            if (stockTotal.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Stock Total may not be blank : ";
+            }
+            //if the StockTotal is greater than 4 characters
+            if (stockTotal.Length > 4)
+            {
+                //record the error
+                Error = Error + "The Stock Total must be less than 4 charcters : ";
+            }
+            //copy the stockArriveDate value to the DateTemp variable
+            DateTemp = Convert.ToDateTime(stockArriveDate);
+            //check to see if the date is less than today's date
+            if (DateTemp < DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the past :";
+            }
+            //return any error messages
+            return Error;
+        }
+
+        
     }
 }
