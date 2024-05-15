@@ -17,12 +17,37 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         // Create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
-        // Capture the Customer Note
-        AnOrder.CustomerNote = txtCustomerNote.Text;
-        // Store the note in the session object.
-        Session["AnOrder"] = AnOrder;
-        // Navigate to the view page
-        Response.Redirect("OrderViewer.aspx");
+        // Capture the data from the table.
+        string OrderID = txtOrderID.Text;
+        string IsPaid = chkPaid.Text;
+        string DateOrderPlaced = txtDatePlaced.Text;
+        string DeliveryType = txtDeliveryType.Text;
+        string StaffNote = txtStaffNote.Text;
+        string CustomerNote = txtCustomerNote.Text;
+        string OrderPrice = txtPrice.Text;
+        // Validate the data.
+        string Error = "";
+        Error = AnOrder.Valid(OrderID, IsPaid, DateOrderPlaced, DeliveryType, OrderPrice, StaffNote, CustomerNote);
+        // Store the data.
+        if (Error == "")
+        {
+            AnOrder.OrderID = Convert.ToInt32(txtOrderID.Text);
+            AnOrder.IsPaid = Convert.ToBoolean(chkPaid.Checked);
+            AnOrder.DateOrderPlaced = Convert.ToDateTime(txtDatePlaced.Text);
+            AnOrder.DeliveryType = txtDeliveryType.Text;
+            AnOrder.StaffNote = txtStaffNote.Text;
+            AnOrder.CustomerNote = txtCustomerNote.Text;
+            AnOrder.OrderPrice = Convert.ToInt32(txtPrice.Text);
+            // Store the note in the session object.
+            Session["AnOrder"] = AnOrder;
+            // Navigate to the view page
+            Response.Redirect("OrderViewer.aspx");
+        }
+        else
+        {
+            // Display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

@@ -621,6 +621,24 @@ namespace Testing3
         }
 
         /**
+         * String / DeliveryType testing.
+        **/
+        [TestMethod]
+        public void DeliveryTypeInvalidDeliveryType()
+        {
+            // Create an instance of the class we want to create.
+            clsOrder AnOrder = new clsOrder();
+            // String variable to store any error message.
+            String Error = "";
+            // Create some test data to pass to the method.
+            string DeliveryType = "Slow";
+            // Invoke the method.
+            Error = AnOrder.Valid(OrderID, IsPaid, DateOrderPlaced, DeliveryType, OrderPrice, StaffNote, CustomerNote);
+            // Test to see that the result is correct.
+            Assert.AreEqual(Error, "");
+        }
+
+        /**
          * Integer / OrderPrice testing.
         **/
         [TestMethod]
