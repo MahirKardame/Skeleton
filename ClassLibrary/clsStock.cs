@@ -185,15 +185,79 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The Stock Total must be less than 4 charcters : ";
             }
-            //copy the stockArriveDate value to the DateTemp variable
-            DateTemp = Convert.ToDateTime(stockArriveDate);
-            //check to see if the date is less than today's date
-            if (DateTemp < DateTime.Now.Date)
+
+            //if carModel is blank
+            if (carModel.Length == 0)
             {
-                Error = Error + "The date cannot be in the past :";
+                //record the error
+                Error = Error + "The carModel may not be blank : ";
             }
+            //if the carModel is greater than 15 characters
+            if (carModel.Length > 15)
+            {
+                //record the error
+                Error = Error + "The carModel must be less than 15 charcters : ";
+            }
+
+            //if carColour is blank
+            if (carColour.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Stock Total may not be blank : ";
+            }
+            //if the CarColour is greater than 12 characters
+            if (carColour.Length > 12)
+            {
+                //record the error
+                Error = Error + "The Car Colour must be less than 12 charcters : ";
+            }
+
+            //if carBrand is blank
+            if (carBrand.Length == 0)
+            {
+                //record the error
+                Error = Error + "The carBrand may not be blank : ";
+            }
+            //if the carBrand is greater than 16 characters
+            if (carBrand.Length > 16)
+            {
+                //record the error
+                Error = Error + "The carBrand must be less than 16 charcters : ";
+            }
+
+            //create an instance of DateTime to compare with DateTemp
+            //in the if statements
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                //copy the stockArriveDate value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(stockArriveDate);
+
+                if (DateTemp < DateComp.AddDays(-3))  //compare StockArriveDate
+                {
+                    //record the error 
+                    Error = Error + "The date cannot be in the past :";
+
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp.AddDays(+3))
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
             //return any error messages
             return Error;
+            
+            
         }
 
         
