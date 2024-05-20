@@ -27,24 +27,44 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance o the clsStock
         clsStock AStock = new clsStock();
-        //capture the car id
-        AStock.CarID = Convert.ToInt16(txtCarID.Text);
         //capture the stock total
-        AStock.StockTotal = Convert.ToInt16(txtStockTotal.Text);
+        string StockTotal = txtStockTotal.Text;
         //capture the car model
-        AStock.CarModel = txtCarModel.Text;
+        string CarModel = txtCarModel.Text;
         //capture the car colour
-        AStock.CarColour = txtCarColour.Text;
+        string CarColour = txtCarModel.Text;
         //capture the car brand
-        AStock.CarBrand = txtCarBrand.Text;
+        string CarBrand = txtCarBrand.Text;
         //capture the stock arrive date
-        AStock.StockArriveDate = Convert.ToDateTime(txtStockArriveDate.Text);
+        string StockArriveDate = txtStockArriveDate.Text;
         //capture stock available check box
-        AStock.StockAvailable = chkStockAvailable.Checked;
-        //store the address in the session object
-        Session["AStock"] = AStock;
-        //navigate to the view page
-        Response.Redirect("StockViewer.aspx");
+        string StockAvailable = chkStockAvailable.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AStock.Valid(StockTotal, CarModel, CarColour, CarColour, StockArriveDate);
+        if (Error == "")
+        {
+            //capture the Stock total
+            AStock.StockTotal = Convert.ToInt32(StockTotal);
+            //capture the car model
+            AStock.CarModel = CarModel;
+            //capture the car colour
+            AStock.CarColour = CarColour;
+            //capture the car bramd
+            AStock.CarBrand = CarBrand;
+            //capture the Stock arrive date
+            AStock.StockArriveDate = Convert.ToDateTime(StockArriveDate);
+            //store the address in the session object
+            Session["AStock"] = AStock;
+            //navigate to the view page
+            Response.Redirect("StockViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
 

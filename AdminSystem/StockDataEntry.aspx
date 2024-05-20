@@ -5,6 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        #form1 {
+            height: 496px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server" aria-busy="False">
@@ -32,7 +37,7 @@
         <asp:Label ID="lblStockArriveDate" runat="server" style="z-index: 1; left: 10px; top: 178px; position: absolute" Text="Stock Arrive Date"></asp:Label>
         <asp:CheckBox ID="chkStockAvailable" runat="server" style="z-index: 1; left: 130px; top: 208px; position: absolute" Text="Stock Available" />
         <br />
-            <asp:Button ID="btnFind" runat="server" OnClick="Button1_Click" Text="Find" style="z-index: 1; left: 10px; top: 338px; position: absolute" />
+            <asp:Button ID="btnFind" runat="server" OnClick="Button1_Click" Text="Find" style="z-index: 1; left: 263px; top: 33px; position: absolute" />
         <br />
         <br />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 262px; position: absolute" Text="[Error]"></asp:Label>
@@ -40,8 +45,6 @@
         <br />
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 10px; top: 300px; position: absolute" Text="OK" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 53px; top: 300px; position: absolute" Text="Cancel" />
-        <p style="width: 41px">
-            &nbsp;</p>
     </form>
 </body>
 </html>
