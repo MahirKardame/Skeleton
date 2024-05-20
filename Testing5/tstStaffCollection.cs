@@ -88,5 +88,33 @@ namespace Testing5
             //test to see that the two values are the same
             Assert.AreEqual(AllStaff.Count, TestList.Count);  
         }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create the item of test data
+            clsStaff TestItem = new clsStaff();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.StaffId = 1;
+            TestItem.StaffName = "bob";
+            TestItem.JobTitle = "admin";
+            TestItem.StaffEmail = "bob@work.com";
+            TestItem.StaffAddress = "1 main street";
+            TestItem.DateJoined = DateTime.Now;
+            TestItem.IsAdmin = true;
+            //set this address to the test data
+            AllStaff.ThisStaffMember = TestItem;
+            //add the record
+            PrimaryKey = AllStaff.Add();
+            //set the primary key of the test data
+            TestItem.StaffId = PrimaryKey;
+            //find the record
+            AllStaff.ThisStaffMember.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStaff.ThisStaffMember, TestItem);
+        }
     }
 }

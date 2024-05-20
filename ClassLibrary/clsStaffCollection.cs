@@ -5,7 +5,10 @@ namespace ClassLibrary
 {
     public class clsStaffCollection
     {
+        //private data member for the list
         List<clsStaff> mStaffList = new List<clsStaff>();
+        //private data member for thisStaffMember
+        clsStaff mThisStaffMember = new clsStaff();
 
         public clsStaffCollection()
         {
@@ -38,7 +41,7 @@ namespace ClassLibrary
                 Index++;
             }
         }
-
+        //public property for StaffList
         public List<clsStaff> StaffList
         {
             get
@@ -52,7 +55,7 @@ namespace ClassLibrary
                 mStaffList = value;
             }
         }
-
+        //public property for Count
         public int Count 
         {
             get
@@ -64,6 +67,36 @@ namespace ClassLibrary
                 //nothing for now
             }
         }
-        public clsStaff ThisStaffMember { get; set; }
+        //public property for ThisStaffMember
+        public clsStaff ThisStaffMember 
+        {
+            get
+            {
+                //set the private data
+                return mThisStaffMember;
+            }
+            set
+            {
+                //set the private data
+                mThisStaffMember = value;
+            }
+        }
+
+        public int Add()
+        {
+            //adds a record to the database based on the values of mThisStaffMember
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@staffName", mThisStaffMember.StaffName);
+            DB.AddParameter("@jobTitle", mThisStaffMember.JobTitle);
+            DB.AddParameter("@staffEmail", mThisStaffMember.StaffEmail);
+            DB.AddParameter("@staffAddress", mThisStaffMember.StaffAddress);
+            DB.AddParameter("@dateJoined", mThisStaffMember.DateJoined);
+            DB.AddParameter("@isAdmin", mThisStaffMember.IsAdmin);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblStaff_Insert");
+        }
     }
 }
