@@ -38,8 +38,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.StaffNote = txtStaffNote.Text;
             AnOrder.CustomerNote = txtCustomerNote.Text;
             AnOrder.OrderPrice = Convert.ToInt32(txtPrice.Text);
-            // Store the note in the session object.
-            Session["AnOrder"] = AnOrder;
+            // Create a new instance of the Order collection.
+            clsOrderCollection OrderList = new clsOrderCollection();
+            // Set the ThisOrder property.
+            OrderList.ThisOrder = AnOrder;
+            // Add the new record.
+            OrderList.Add();
             // Navigate to the view page
             Response.Redirect("OrderViewer.aspx");
         }

@@ -13,8 +13,5 @@ public partial class _1Viewer : System.Web.UI.Page
         // Create a new instnace of clsOrder
         clsOrder AnOrder = new clsOrder();
         // Get the data from the session object.
-        AnOrder = (clsOrder)Session["AnOrder"];
-        // Display the note.
-        Response.Write(AnOrder.CustomerNote);
     }
 }
