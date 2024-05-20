@@ -18,7 +18,38 @@ namespace Testing4
 
         }
 
-       
+
+       [TestMethod]
+         public void AddMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of the test data
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.EmailOptIn = true;
+            TestItem.CustomerID = 1;
+            TestItem.CustomerEmail = "albon@hotmail.com";
+            TestItem.CustomerPhone = "0734567890";
+            TestItem.RegistrationDate = DateTime.Now;
+            TestItem.Address = "williams";
+            TestItem.FullName = "AlexAlbon";
+            //set ThisCustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the test data
+            TestItem.CustomerID = PrimaryKey;
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+        }
+
+
+
 
         [TestMethod]
         public void ThisCustomerPropertyOK()

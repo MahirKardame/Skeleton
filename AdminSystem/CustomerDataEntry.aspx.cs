@@ -55,10 +55,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.RegistrationDate = Convert.ToDateTime(RegistrationDate);
             //capture the EmailOptIn
             AnCustomer.EmailOptIn = chkEmailOptIn.Checked;
-            //store the Customer in the session object
-            Session["AnCustomer"] = AnCustomer;
-            //navigate to the view page
-            Response.Redirect("CustomerViewer.aspx");
+            //create a new instance of the address collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //set the ThisCustomer property
+            CustomerList.ThisCustomer = AnCustomer;
+            //add the new record
+            CustomerList.Add();
+            //redirect back to the list page
+            Response.Redirect("CustomerList.aspx");
+            
 
         }
         else
