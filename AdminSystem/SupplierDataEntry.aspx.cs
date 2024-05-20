@@ -15,13 +15,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-
     protected void btnOK_Click(object sender, EventArgs e)
     {
         //create a new instance of clsSupplier
         clsSupplier AnSupplier = new clsSupplier();
         //capture the All data
-        string SupplierId = txtSupplierId.Text;
         string SupplierName = txtSupplierName.Text;
         string SupplierEmail = txtSupplierEmail.Text;
         string PhoneNumber = txtPhoneNumber.Text;
@@ -34,17 +32,36 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "")
         {
             //capture the All data
-            AnSupplier.SupplierId = Convert.ToInt32(txtSupplierId.Text);
-            AnSupplier.SupplierName = txtSupplierName.Text;
-            AnSupplier.SupplierEmail = txtSupplierEmail.Text;
-            AnSupplier.PhoneNumber = txtPhoneNumber.Text;
-            AnSupplier.Address = txtAddress.Text;
-            AnSupplier.LastOrderDate = Convert.ToDateTime(DateTime.Now);
+            AnSupplier.SupplierId = SupplierId;
+            AnSupplier.SupplierName = SupplierName;
+            AnSupplier.SupplierEmail = SupplierEmail;
+            AnSupplier.PhoneNumber = PhoneNumber;
+            AnSupplier.Address = Address;
+            AnSupplier.LastOrderDate = Convert.ToDateTime(LastOrderDate);
             AnSupplier.Available = chkAvailable.Checked;
-            //store the Name in a the session object
-            Session["AnSupplier"] = AnSupplier;
-            //navigate to the view page
-            Response.Redirect("SupplierViewer.aspx");
+            //create a new instance of the supplier collection
+            clsSupplierCollection SupplierList = new clsSupplierCollection();
+            //if this is a new record i.e supplierid = -1 then add the data
+            if (SupplierId == -1)
+            {
+                //set the ThisSupplier property
+                SupplierList.ThisSupplier = AnSupplier;
+                //add the new record
+                SupplierList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                SupplierList.ThisSupplier.Find(SupplierId);
+                //set the ThisSupplier 
+                SupplierList.ThisSupplier = AnSupplier;
+                    //update the record
+                    SupplierList.Update();
+            }
+           
+            //redirect back to the list page
+            Response.Redirect("SupplierList.aspx");
         }
         else
         {

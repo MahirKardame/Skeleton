@@ -71,7 +71,22 @@ namespace ClassLibrary
             }
         }
 
+        public void Update()
+        {
+            //update an existing record based on the values of ThisSupplier
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("SupplierId", mThisSupplier.SupplierId);
+            DB.AddParameter("SupplierName", mThisSupplier.SupplierName);
+            DB.AddParameter("SupplierEmail", mThisSupplier.SupplierEmail);
+            DB.AddParameter("PhoneNumber", mThisSupplier.PhoneNumber);
+            DB.AddParameter("Address", mThisSupplier.Address);
+            DB.AddParameter("LastOrderDate", mThisSupplier.LastOrderDate);
+            DB.AddParameter("Available", mThisSupplier.Available);
 
-        public clsSupplier ThisSupplier { get; set; }
+            //execute the query returning the primary key values
+            DB.Execute("sproc_tblSupplier_Update");
+        }
     }
 }
