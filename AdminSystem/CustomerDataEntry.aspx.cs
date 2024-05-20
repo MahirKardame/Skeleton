@@ -8,9 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with the page level scope
+    Int32 CustomerID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the address to be processed
+        CustomerID = Convert.ToInt32(Session["CustomerID"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (CustomerID != -1)
+            {
+                //display the current data for the record
+                DisplayCustomer();
+            }
+        }
 
+    }
+
+    void DisplayCustomer()
+    {
+        //crete an instance of the address book
+        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+        //find the record to update
+        CustomerBook.ThisCustomer.Find(CustomerID);
+        //display the data for the record
+        txtCustomerID.Text = CustomerBook.ThisCustomer.CustomerID.ToString();
+        txtFullName.Text = CustomerBook.ThisCustomer.FullName.ToString();
+        txtCustomerEmail.Text = CustomerBook.ThisCustomer.CustomerEmail.ToString();
+        txtCustomerPhone.Text = CustomerBook.ThisCustomer.CustomerPhone.ToString();
+        txtRegistrationDate.Text = CustomerBook.ThisCustomer.RegistrationDate.ToString();
+        chkEmailOptIn.Checked = CustomerBook.ThisCustomer.EmailOptIn;
     }
 
     protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -43,6 +71,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnCustomer.Valid(FullName, CustomerEmail, CustomerPhone, Address, RegistrationDate);
         if (Error == "")
         {
+            //capture the CustomerID
+            AnCustomer.CustomerID = CustomerID; 
             //capture the FullName
             AnCustomer.FullName = FullName;
             //capture the CustomerEmail
@@ -57,10 +87,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.EmailOptIn = chkEmailOptIn.Checked;
             //create a new instance of the address collection
             clsCustomerCollection CustomerList = new clsCustomerCollection();
-            //set the ThisCustomer property
-            CustomerList.ThisCustomer = AnCustomer;
-            //add the new record
-            CustomerList.Add();
+
+            //if this is a new record i.e. CustomerID = -1 then add the data
+            if (CustomerID == -1)
+            {
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = AnCustomer;
+                //add the new record
+                CustomerList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                CustomerList.ThisCustomer.Find(CustomerID);
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = AnCustomer;
+                //update the record
+                CustomerList.Update();
+            }
             //redirect back to the list page
             Response.Redirect("CustomerList.aspx");
             
