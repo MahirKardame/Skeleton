@@ -48,6 +48,44 @@ namespace Testing4
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
 
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.EmailOptIn = true;
+            TestItem.CustomerEmail = "albon@hotmail.com";
+            TestItem.CustomerPhone = "0734567890";
+            TestItem.RegistrationDate = DateTime.Now;
+            TestItem.Address = "williams";
+            TestItem.FullName = "AlexAlbon";
+            //set ThisCustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the test data
+            TestItem.CustomerID = PrimaryKey;
+            //modify the test record
+            TestItem.EmailOptIn = false;
+            TestItem.CustomerEmail = "sebbuemi@hotmail.com";
+            TestItem.CustomerPhone = "0734557890";
+            TestItem.RegistrationDate = DateTime.Now;
+            TestItem.Address = "Milton Keynes";
+            TestItem.FullName = "Sebastian Buemi";
+            //set the record based on the new test data
+            AllCustomers.ThisCustomer = TestItem;
+            //update the record
+            AllCustomers.Update();
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see if ThisCustomer matches the test data
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+        }
 
 
 
