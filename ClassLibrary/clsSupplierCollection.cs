@@ -7,6 +7,8 @@ namespace ClassLibrary
     {
         //private data member for the list
         List<clsSupplier> mSupplierList = new List<clsSupplier>();
+        //private member data for ThisSupplier
+        clsSupplier mThisSupplier = new clsSupplier();
 
         //constructor for the class
         public clsSupplierCollection()
@@ -69,6 +71,37 @@ namespace ClassLibrary
                 //set shall worry about this later
                
             }
+        }
+
+
+        public clsSupplier ThisSupplier
+        {
+            get
+            {
+                //return the private data
+                return mThisSupplier;
+            }
+           set
+            {
+                //set the private data
+                mThisSupplier = value;
+            }
+        }
+        public int Add()
+        {
+            //adds a record to the database based on the values of mThisSupplier
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("SupplierName", mThisSupplier.SupplierName);
+            DB.AddParameter("SupplierEmail", mThisSupplier.SupplierEmail);
+            DB.AddParameter("PhoneNumber", mThisSupplier.PhoneNumber);
+            DB.AddParameter("Address", mThisSupplier.Address);
+            DB.AddParameter("LastOrderDate", mThisSupplier.LastOrderDate);
+            DB.AddParameter("Available", mThisSupplier.Available);
+
+            //execute the query returning the primary key values
+            return DB.Execute("sproc_tblSupplier_Insert");
         }
 
         public void Update()

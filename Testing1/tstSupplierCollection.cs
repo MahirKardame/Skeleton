@@ -91,6 +91,73 @@ namespace Testing1
             //test to see that the two values are the same
             Assert.AreEqual(AllSuppliers.Count, TestList.Count);
         }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+            //create the item of the test data
+            clsSupplier TestItem = new clsSupplier();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set the properties of the test object
+            TestItem.SupplierName = "Audi";
+            TestItem.SupplierEmail = "audi@gmail.com";
+            TestItem.PhoneNumber = "01234567890";
+            TestItem.Address = "Leicester LE4 0AH";
+            TestItem.LastOrderDate = DateTime.Now;
+            TestItem.Available = true;
+            //set ThisSupplier to the test data
+            AllSuppliers.ThisSupplier = TestItem;
+            //add the record
+            PrimaryKey = AllSuppliers.Add();
+            //set the primary key of the test data
+            TestItem.SupplierId = PrimaryKey;
+            //find the record
+            AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllSuppliers.ThisSupplier, TestItem);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+            //create the item of the test data
+            clsSupplier TestItem = new clsSupplier();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set the properties of the test object
+            TestItem.SupplierName = "Audi";
+            TestItem.SupplierEmail = "audi@gmail.com";
+            TestItem.PhoneNumber = "01234567890";
+            TestItem.Address = "Leicester LE4 0AH";
+            TestItem.LastOrderDate = DateTime.Now;
+            TestItem.Available = true;
+            //set ThisSupplier to the test data
+            AllSuppliers.ThisSupplier = TestItem;
+            //add the record
+            PrimaryKey = AllSuppliers.Add();
+            //set the primary key of the test data
+            TestItem.SupplierId = PrimaryKey;
+            //modify the test record
+            TestItem.SupplierName = "Audi";
+            TestItem.SupplierEmail = "audi@gmail.com";
+            TestItem.PhoneNumber = "01234567890";
+            TestItem.Address = "Leicester LE4 0AH";
+            TestItem.LastOrderDate = DateTime.Now;
+            TestItem.Available = false;
+            //set the record based on the new record 
+            AllSuppliers.ThisSupplier = TestItem;
+            //update the record
+            AllSuppliers.Update();
+            //find the record
+            AllSuppliers.ThisSupplier.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllSuppliers.ThisSupplier, TestItem);
+        }
     }
         
 }

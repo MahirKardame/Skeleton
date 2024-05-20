@@ -10,9 +10,38 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 SupplierId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the Supplier to be processed
+        SupplierId = Convert.ToInt32(Session["SupplierId"]);
+        //if this is the first time the page is displayed
+        if (IsPostBack == false)
+        {
+            //if this is not the new record
+            if (SupplierId != -1)
+            {
+                //display the current data for the record
+                DisplaySupplier();
+            }
+        }
+    }
 
+     void DisplaySupplier()
+    {
+        //create an instance of the supplier book
+        clsSupplierCollection SupplierBook = new clsSupplierCollection();
+        //find the record to update
+        SupplierBook.ThisSupplier.Find(SupplierId);
+        //display the data for the record
+        txtSupplierId.Text = SupplierBook.ThisSupplier.SupplierId.ToString();
+        txtSupplierName.Text = SupplierBook.ThisSupplier.SupplierName.ToString();
+        txtSupplierEmail.Text = SupplierBook.ThisSupplier.SupplierEmail.ToString();
+        txtPhoneNumber.Text = SupplierBook.ThisSupplier.PhoneNumber.ToString();
+        txtAddress.Text = SupplierBook.ThisSupplier.Address.ToString();
+        txtLastOrderDate.Text = SupplierBook.ThisSupplier.LastOrderDate.ToString();
+        chkAvailable.Checked = SupplierBook.ThisSupplier.Available;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
