@@ -6,6 +6,7 @@ namespace ClassLibrary
 {
     public class clsCustomerCollection
     {
+
         //constructor for the class
         public clsCustomerCollection()
         {
@@ -29,6 +30,10 @@ namespace ClassLibrary
                 AnCustomer.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
                 AnCustomer.EmailOptIn = Convert.ToBoolean(DB.DataTable.Rows[Index]["EmailOptIn"]);
                 AnCustomer.RegistrationDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["RegistrationDate"]);
+                //AnCustomer.EmailOptIn = DB.DataTable.Rows[Index]["EmailOptIn"] != DBNull.Value ? Convert.ToBoolean(DB.DataTable.Rows[Index]["EmailOptIn"]) : false;
+               //AnCustomer.RegistrationDate = DB.DataTable.Rows[Index]["RegistrationDate"] != DBNull.Value
+                //? Convert.ToDateTime(DB.DataTable.Rows[Index]["RegistrationDate"])
+                //: DateTime.MinValue; // or any default value
                 AnCustomer.FullName = Convert.ToString(DB.DataTable.Rows[Index]["FullName"]);
                 AnCustomer.CustomerEmail = Convert.ToString(DB.DataTable.Rows[Index]["CustomerEmail"]);
                 AnCustomer.CustomerPhone = Convert.ToString(DB.DataTable.Rows[Index]["CustomerPhone"]);
@@ -38,11 +43,12 @@ namespace ClassLibrary
                 //point at the next record
                 Index++;
             }
-            
+
         }
 
         //private data member for the list
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        clsCustomer mThisCustomer = new clsCustomer();
 
         public List<clsCustomer> CustomerList
         {
@@ -54,7 +60,7 @@ namespace ClassLibrary
             set
             {
                 //set the private data
-                 mCustomerList = value;
+                mCustomerList = value;
             }
         }
 
@@ -72,6 +78,38 @@ namespace ClassLibrary
             }
         }
 
-        public clsCustomer ThisCustomer { get; set; }
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                //return the private data
+                return mThisCustomer;
+            }
+            set
+            {
+                //set the private data 
+                mThisCustomer = value;
+            }
+        }
+
+
+
+        public int Add()
+        {
+            //adds a record to the database based on the values of mThisCustomer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the paramaters for the stored procedure
+            DB.AddParameter("@fullName", mThisCustomer.FullName);
+            DB.AddParameter("@customerEmail", mThisCustomer.CustomerEmail);
+            DB.AddParameter("@customerPhone", mThisCustomer.CustomerPhone);
+            DB.AddParameter("@address", mThisCustomer.Address);
+            DB.AddParameter("@registrationDate", mThisCustomer.RegistrationDate);
+            DB.AddParameter("@emailOptIn", mThisCustomer.EmailOptIn);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblCustomer_Insert");
+
+        }
     }
 }
