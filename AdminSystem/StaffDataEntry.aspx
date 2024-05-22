@@ -39,7 +39,7 @@
         </p>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 46px; top: 308px; position: absolute" Text="OK" />
         <p>
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 104px; top: 308px; position: absolute" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 104px; top: 308px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
         </p>
         <p>
             &nbsp;</p>
