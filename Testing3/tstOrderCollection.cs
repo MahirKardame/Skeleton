@@ -102,7 +102,6 @@ namespace Testing3
             // Variable to store the primary key.
             Int32 PrimaryKey = 33;
             // Set its properties.
-            TestItem.OrderID = 33;
             TestItem.IsPaid = true;
             TestItem.DateOrderPlaced = DateTime.Now;
             TestItem.DeliveryType = "Slow";
@@ -119,5 +118,43 @@ namespace Testing3
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
 
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            // Create an instance of the class we want to create.
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            // Create the item of test data.
+            clsOrder TestItem = new clsOrder();
+            // Variable to store the primary key.
+            Int32 PrimaryKey = 33;
+            // Set its properties.
+            TestItem.IsPaid = true;
+            TestItem.DateOrderPlaced = DateTime.Now;
+            TestItem.DeliveryType = "Slow";
+            TestItem.CustomerNote = "This is a test for the Update Method.";
+            TestItem.StaffNote = "This is a test for the UpdateMethodOK.";
+            TestItem.OrderPrice = 100000;
+            // Set ThisOrder to the test data.
+            AllOrders.ThisOrder = TestItem;
+            // Add the record
+            PrimaryKey = AllOrders.Add();
+            // Set the primary key of the test data.
+            TestItem.OrderID = PrimaryKey;
+            // Modify the test record.
+            TestItem.IsPaid = true;
+            TestItem.DateOrderPlaced = DateTime.Now;
+            TestItem.DeliveryType = "Slow";
+            TestItem.CustomerNote = "Updated!";
+            TestItem.StaffNote = "Updated 2!";
+            TestItem.OrderPrice = 100000;
+            // Set the record based on the new test data.
+            AllOrders.ThisOrder = TestItem;
+            // Update the record.
+            AllOrders.Update();
+            // Find the record.
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            // Test to see if ThisOrder matches the test data.
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+        }
     }
 }

@@ -32,4 +32,30 @@ public partial class _1_List : System.Web.UI.Page
         lstOrderList.DataBind();
     }
 
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        // Variable to store the primary key value of the record to be edited.
+        Int32 OrderID;
+        // If a record has been selected from the list.
+        if (lstOrderList.SelectedIndex != -1)
+        {
+            // Get the Primary Key value of the record to edit.
+            OrderID = Convert.ToInt32(lstOrderList.SelectedValue);
+            // Store the data in the session object.
+            Session["OrderID"] = OrderID;
+            // Redirect to the edit page.
+            Response.Redirect("OrderDataEntry.aspx");
+        }
+        else // If no record has been selected.
+        {
+            lblError.Text = "Please select a record from the list to edit";
+        }
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["OrderID"] = -1;
+        Response.Redirect("OrderDataEntry.aspx");
+    }
 }

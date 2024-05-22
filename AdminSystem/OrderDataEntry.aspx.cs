@@ -8,9 +8,41 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Get the number of the adress to be processed.
+        OrderID = Convert.ToInt32(Session["OrderID"]);
+        if (IsPostBack == false) 
+        {
+            // If this is the not a new recor
+            if (OrderID != -1)
+            {
+                // Display the current data for the record.
+                DisplayOrder();
+            }
+            else
+            {
+                txtOrderID.Text = "-1";
+                txtOrderID.Enabled = false;
+            }
+        }
+    }
 
+    private void DisplayOrder()
+    {
+        // Create an instance of the Order book
+        clsOrderCollection Orders = new clsOrderCollection();
+        // Find the record to update
+        Orders.ThisOrder.Find(OrderID);
+        // Display the data for the record.
+        txtOrderID.Text = Orders.ThisOrder.OrderID.ToString();
+        chkPaid.Checked = Orders.ThisOrder.IsPaid;
+        txtDatePlaced.Text = Orders.ThisOrder.DateOrderPlaced.ToString();
+        txtDeliveryType.Text = Orders.ThisOrder.DeliveryType.ToString();
+        txtStaffNote.Text = Orders.ThisOrder.StaffNote.ToString();
+        txtCustomerNote.Text = Orders.ThisOrder.CustomerNote.ToString();
+        txtPrice.Text = Orders.ThisOrder.OrderPrice.ToString();
     }
 
     protected void btnSubmit_Click(object sender, EventArgs e)
@@ -27,23 +59,46 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string OrderPrice = txtPrice.Text;
         // Validate the data.
         string Error = "";
-        Error = AnOrder.Valid(OrderID, IsPaid, DateOrderPlaced, DeliveryType, OrderPrice, StaffNote, CustomerNote);
+        // Workaround for edit but including old Date
+        if (Convert.ToInt32(OrderID) == -1)
+        {
+            Error = AnOrder.Valid(OrderID, IsPaid, DateOrderPlaced, DeliveryType, OrderPrice, StaffNote, CustomerNote);
+        }
+        else 
+        {
+            Error = AnOrder.Valid(OrderID, IsPaid, DateTime.Now.Date.ToString(), DeliveryType, OrderPrice, StaffNote, CustomerNote);
+        }
+        
         // Store the data.
         if (Error == "")
         {
-            AnOrder.OrderID = Convert.ToInt32(txtOrderID.Text);
+            AnOrder.OrderID = Convert.ToInt32(OrderID); // DONT MISS
             AnOrder.IsPaid = Convert.ToBoolean(chkPaid.Checked);
-            AnOrder.DateOrderPlaced = Convert.ToDateTime(txtDatePlaced.Text);
-            AnOrder.DeliveryType = txtDeliveryType.Text;
-            AnOrder.StaffNote = txtStaffNote.Text;
-            AnOrder.CustomerNote = txtCustomerNote.Text;
-            AnOrder.OrderPrice = Convert.ToInt32(txtPrice.Text);
+            AnOrder.DateOrderPlaced = Convert.ToDateTime(DateOrderPlaced);
+            AnOrder.DeliveryType = DeliveryType;
+            AnOrder.StaffNote = StaffNote;
+            AnOrder.CustomerNote = CustomerNote;
+            AnOrder.OrderPrice = Convert.ToInt32(OrderPrice);
             // Create a new instance of the Order collection.
             clsOrderCollection OrderList = new clsOrderCollection();
-            // Set the ThisOrder property.
-            OrderList.ThisOrder = AnOrder;
-            // Add the new record.
-            OrderList.Add();
+
+            // If this is a new record i.e. AddressID
+            if (Convert.ToInt32(OrderID) == -1) 
+            {
+                // Set the ThisOrder property.
+                OrderList.ThisOrder = AnOrder;
+                // Add the new record.
+                OrderList.Add();
+            }
+            else // Otherwise it must be an update.
+            {
+                // Find the record to update.
+                OrderList.ThisOrder.Find(Convert.ToInt32(OrderID));
+                // Set the ThisOrder property.
+                OrderList.ThisOrder = AnOrder;
+                // Add the new record.
+                OrderList.Update();
+            }
             // Navigate to the view page
             Response.Redirect("OrderViewer.aspx");
         }

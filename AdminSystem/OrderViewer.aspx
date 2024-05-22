@@ -7,7 +7,6 @@
     <title></title>
 </head>
 <body>
-    Test
     <form id="form1" runat="server">
         <div>
         </div>
