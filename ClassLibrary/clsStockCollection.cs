@@ -35,32 +35,38 @@ namespace ClassLibrary
         //private data member for the list
         List<clsStock> mStockList = new List<clsStock>();
 
+        //constructor for the class
         public clsStockCollection()
         {
-            //create the items of the test data
-            clsStock TestItem = new clsStock();
-            //set its properties
-            TestItem.CarID = 1;
-            TestItem.StockTotal = 12;
-            TestItem.CarModel = "Ford";
-            TestItem.CarColour = "Blue";
-            TestItem.CarBrand = "Focus";
-            TestItem.StockArriveDate = DateTime.Now;
-            TestItem.StockAvailable = true;
-            //add the test item to the test list
-            mStockList.Add(TestItem);
-            //re initialise the object for some new data
-            TestItem = new clsStock();
-            //set its properties
-            TestItem.CarID = 1;
-            TestItem.StockTotal = 12;
-            TestItem.CarModel = "Ford";
-            TestItem.CarColour = "Blue";
-            TestItem.CarBrand = "Focus";
-            TestItem.StockArriveDate = DateTime.Now;
-            TestItem.StockAvailable = true;
-            //add the item to the test list
-            mStockList.Add(TestItem);
+            //variable for the index
+            Int32 Index = 0;
+            //vairiable to store the data connect
+            Int32 RecordCount = 0;
+            //object for the data connect
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_SelectAll");
+            //get the count of records to process
+            RecordCount = DB.Count;
+            //while there ae records to process
+            while (Index < RecordCount)
+            {
+                //create a blank stock
+                clsStock AStock = new clsStock();
+                //read in the fields for the current record
+                AStock.CarID = Convert.ToInt32(DB.DataTable.Rows[Index]["CarID"]);
+                AStock.StockTotal = Convert.ToInt32(DB.DataTable.Rows[Index]["StockTotal"]);
+                AStock.CarModel = Convert.ToString(DB.DataTable.Rows[Index]["CarModel"]);
+                AStock.CarColour = Convert.ToString(DB.DataTable.Rows[Index]["CarColour"]);
+                AStock.CarBrand = Convert.ToString(DB.DataTable.Rows[Index]["CarBrand"]);
+                AStock.StockArriveDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["StockArriveDate"]);
+                AStock.StockAvailable = Convert.ToBoolean(DB.DataTable.Rows[Index]["StockAvailable"]);
+                //add the record to the private data member
+                mStockList.Add(AStock);
+                //point at the next record
+                Index++;
+            }
         }
+
     }
 }
