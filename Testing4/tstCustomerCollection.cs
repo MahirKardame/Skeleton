@@ -19,8 +19,9 @@ namespace Testing4
         }
 
 
-       [TestMethod]
-         public void AddMethodOK()
+
+        [TestMethod]
+        public void AddMethodOK()
         {
             //create an instance of the class we want to create 
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
@@ -86,6 +87,96 @@ namespace Testing4
             //test to see if ThisCustomer matches the test data
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of the test data
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.EmailOptIn = true;
+            TestItem.CustomerID = 1;
+            TestItem.CustomerEmail = "albon@hotmail.com";
+            TestItem.CustomerPhone = "0734567890";
+            TestItem.RegistrationDate = DateTime.Now;
+            TestItem.Address = "williams";
+            TestItem.FullName = "AlexAlbon";
+            //set ThisCustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the test data
+            TestItem.CustomerID = PrimaryKey;
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //delete the record
+            AllCustomers.Delete();
+            //now find the record
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see that the record was found
+            Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByFullNameOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a blank string (this should return all records)
+            FilteredCustomers.ReportByFullName("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportbyFullNameNoneFound()
+        {
+            //create an instance of the class containing unfiltered results
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a FullName that does not exist
+            FilteredCustomers.ReportByFullName("xxx xxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByFullNameTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a full name that doesnt exist
+            FilteredCustomers.ReportByFullName("yyy yyy");
+            //check that the correct number of records are found
+            if (FilteredCustomers.CustomerList.Count == 2)
+            {
+                //check to see that the first record is 3
+                if (FilteredCustomers.CustomerList[0].CustomerID != 3)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 4
+                if (FilteredCustomers.CustomerList[1].CustomerID != 4)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+
+        }
+
 
 
 

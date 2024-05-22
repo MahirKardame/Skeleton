@@ -28,7 +28,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     void DisplayCustomer()
     {
-        //crete an instance of the address book
+        //crete an instance of the customer book
         clsCustomerCollection CustomerBook = new clsCustomerCollection();
         //find the record to update
         CustomerBook.ThisCustomer.Find(CustomerID);
