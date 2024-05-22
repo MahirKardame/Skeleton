@@ -116,5 +116,18 @@ namespace ClassLibrary
             //execute the query returning the primary key value
             DB.Execute("sproc_tblStaff_Update");
         }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisStaffMember
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@staffId", mThisStaffMember.StaffId);
+            //excute the stored procedure
+            DB.Execute("sproc_tblStaff_Delete");
+        }
     }
+
+    
 }
