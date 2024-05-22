@@ -105,12 +105,48 @@ namespace Testing5
             TestItem.StaffAddress = "1 main street";
             TestItem.DateJoined = DateTime.Now;
             TestItem.IsAdmin = true;
-            //set this address to the test data
+            //set thisStaffMember to the test data
             AllStaff.ThisStaffMember = TestItem;
             //add the record
             PrimaryKey = AllStaff.Add();
             //set the primary key of the test data
             TestItem.StaffId = PrimaryKey;
+            //find the record
+            AllStaff.ThisStaffMember.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStaff.ThisStaffMember, TestItem);
+        }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create the item of test data
+            clsStaff TestItem = new clsStaff();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.StaffName = "bob";
+            TestItem.JobTitle = "admin";
+            TestItem.StaffEmail = "bob@work.com";
+            TestItem.StaffAddress = "1 main street";
+            TestItem.DateJoined = DateTime.Now;
+            TestItem.IsAdmin = true;
+            //set thisStaffMember to the test data
+            AllStaff.ThisStaffMember = TestItem;
+            //add the record
+            PrimaryKey = AllStaff.Add();
+            //set the primary key of the test data
+            TestItem.StaffId = PrimaryKey;
+            //modify the test data
+            TestItem.StaffName = "brad";
+            TestItem.JobTitle = "cleaner";
+            TestItem.StaffEmail = "brad@work.com";
+            TestItem.StaffAddress = "1 different street";
+            TestItem.DateJoined = DateTime.Now;
+            TestItem.IsAdmin = false;
+            //update the record
+            AllStaff.Update();
             //find the record
             AllStaff.ThisStaffMember.Find(PrimaryKey);
             //test to see that the two values are the same
