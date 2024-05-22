@@ -63,4 +63,60 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "please select a record from the list to edit";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be deleted
+        Int32 SupplierId;
+        //if a record has been selected from list
+        if (lstSupplierList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record delete
+            SupplierId = Convert.ToInt32(lstSupplierList.SelectedValue);
+            //store the data in the session object 
+            Session["SupplierId"] = SupplierId;
+            //redirect to the delecte page
+            Response.Redirect("SupplierConfirmDelete.aspx");
+        }
+        else // if no record has been selected
+        {
+            //display an error message
+            lblError.Text = "please select a record from the list to be deleted";
+        }
+    }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the supplier object
+        clsSupplierCollection AnSupplier = new clsSupplierCollection();
+        //retrive the value of address from the presentation layer
+        AnSupplier.ReportByAddress(txtFilterAddress.Text);
+        //set the data source to the list of suppliers in the collection
+        lstSupplierList.DataSource = AnSupplier.SupplierList;
+        //set the name of the primary key
+        lstSupplierList.DataValueField = "SupplierId";
+        //set the name of the field to display
+        lstSupplierList.DataTextField = "Address";
+        //bind the data to the list
+        lstSupplierList.DataBind();
+
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the supplier object
+        clsSupplierCollection AnSupplier = new clsSupplierCollection();
+        //set an empty string
+        AnSupplier.ReportByAddress("");
+        //clear any existing filter to tidy up the interface
+        txtFilterAddress.Text = "";
+        //set the data source to the list of suppliers in the collection
+        lstSupplierList.DataSource = AnSupplier.SupplierList;
+        //set the name of the primary key
+        lstSupplierList.DataValueField = "SupplierId";
+        //set the name of the field to display
+        lstSupplierList.DataTextField = "Address";
+        //bind the data to the list
+        lstSupplierList.DataBind();
+    }
 }
