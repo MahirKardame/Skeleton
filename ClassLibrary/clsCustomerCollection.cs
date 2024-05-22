@@ -10,39 +10,12 @@ namespace ClassLibrary
         //constructor for the class
         public clsCustomerCollection()
         {
-            //variable  for the index
-            Int32 Index = 0;
-            //variable to store the record count
-            Int32 RecordCount = 0;
-            //object for the data connect
+            //object for data connection
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblCustomer_SelectAll");
-            //get the count of records
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                //create a blank customer
-                clsCustomer AnCustomer = new clsCustomer();
-                //read in the fields for the current record
-                //copy the data from the database to the private data members
-                AnCustomer.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
-                AnCustomer.EmailOptIn = Convert.ToBoolean(DB.DataTable.Rows[Index]["EmailOptIn"]);
-                AnCustomer.RegistrationDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["RegistrationDate"]);
-                //AnCustomer.EmailOptIn = DB.DataTable.Rows[Index]["EmailOptIn"] != DBNull.Value ? Convert.ToBoolean(DB.DataTable.Rows[Index]["EmailOptIn"]) : false;
-               //AnCustomer.RegistrationDate = DB.DataTable.Rows[Index]["RegistrationDate"] != DBNull.Value
-                //? Convert.ToDateTime(DB.DataTable.Rows[Index]["RegistrationDate"])
-                //: DateTime.MinValue; // or any default value
-                AnCustomer.FullName = Convert.ToString(DB.DataTable.Rows[Index]["FullName"]);
-                AnCustomer.CustomerEmail = Convert.ToString(DB.DataTable.Rows[Index]["CustomerEmail"]);
-                AnCustomer.CustomerPhone = Convert.ToString(DB.DataTable.Rows[Index]["CustomerPhone"]);
-                AnCustomer.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
-                //add the record to the private data member
-                mCustomerList.Add(AnCustomer);
-                //point at the next record
-                Index++;
-            }
+            //populate the array list with the data table
+            PopulateArray(DB);
 
         }
 
@@ -126,6 +99,64 @@ namespace ClassLibrary
             DB.AddParameter("@emailOptIn", mThisCustomer.EmailOptIn);
             //execute the query returning the primary key value
             DB.Execute("sproc_tblCustomer_Update");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by ThisCustomer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            //execute the query returning the primary key value
+            DB.Execute("sproc_tblCustomer_Delete");
+        }
+
+        public void ReportByFullName(string FullName)
+        {
+            //filters the records based on a full or partial full name code
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the FullName paramater to the database
+            DB.AddParameter("@fullName", FullName);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_FilterByFullName");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the paramater DB
+            //variable for the index
+            //variable  for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mCustomerList = new List<clsCustomer>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank customer
+                clsCustomer AnCustomer = new clsCustomer();
+                //read in the fields for the current record
+                //copy the data from the database to the private data members
+                AnCustomer.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                AnCustomer.EmailOptIn = Convert.ToBoolean(DB.DataTable.Rows[Index]["EmailOptIn"]);
+                AnCustomer.RegistrationDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["RegistrationDate"]);
+                AnCustomer.FullName = Convert.ToString(DB.DataTable.Rows[Index]["FullName"]);
+                AnCustomer.CustomerEmail = Convert.ToString(DB.DataTable.Rows[Index]["CustomerEmail"]);
+                AnCustomer.CustomerPhone = Convert.ToString(DB.DataTable.Rows[Index]["CustomerPhone"]);
+                AnCustomer.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
+                //add the record to the private data member
+                mCustomerList.Add(AnCustomer);
+                //point at the next record
+                Index++;
+
+            }
         }
     }
 }
