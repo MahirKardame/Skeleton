@@ -134,12 +134,12 @@ namespace ClassLibrary
         }
 
 
-        public bool Find(int supplierId)
+        public bool Find(int SupplierId)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
             //add the parameter for the supplier id to search for
-            DB.AddParameter("@SupplierId", supplierId);
+            DB.AddParameter("@SupplierId", SupplierId);
             //execute the stored procedure
             DB.Execute("sproc_tblSupplier_FilterBySupplierId");
             //if one record is found (there should be either one or zero)
@@ -147,11 +147,11 @@ namespace ClassLibrary
             {
                 //copy the data from the database to the private data member
                 mSupplierId = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierId"]);
-                mLastOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["LastOrderDate"]);
                 mSupplierName = Convert.ToString(DB.DataTable.Rows[0]["SupplierName"]);
                 mSupplierEmail = Convert.ToString(DB.DataTable.Rows[0]["SupplierEmail"]);
                 mPhoneNumber = Convert.ToString(DB.DataTable.Rows[0]["PhoneNumber"]);
                 mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                mLastOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["LastOrderDate"]);
                 mAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Available"]);
                 //always return ture
                 return true;
