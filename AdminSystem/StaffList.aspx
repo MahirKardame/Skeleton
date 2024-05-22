@@ -13,9 +13,10 @@
         </div>
         <p>
             &nbsp;</p>
-        <asp:Button ID="addBtn" runat="server" OnClick="addBtn_Click" style="z-index: 1; left: 22px; top: 334px; position: absolute" Text="Add" />
-        <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 91px; top: 334px; position: absolute" Text="Edit" />
+        <asp:Button ID="addBtn" runat="server" OnClick="addBtn_Click" style="z-index: 1; left: 22px; top: 333px; position: absolute" Text="Add" />
+        <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 91px; top: 333px; position: absolute" Text="Edit" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 22px; top: 391px; position: absolute"></asp:Label>
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 160px; top: 333px; position: absolute" Text="Delete" />
     </form>
 </body>
 </html>

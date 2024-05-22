@@ -156,7 +156,7 @@ namespace Testing5
             Boolean found = false;
 
             //create some test data to use with the method
-            Int32 staffID = 2;
+            Int32 staffID = 32;
 
             //invoke the method
             found = Staff.Find(staffID);
@@ -179,13 +179,13 @@ namespace Testing5
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 staffID = 2;
+            Int32 staffID = 32;
 
             //invoke the method
             found = Staff.Find(staffID);
 
             //check the staffId
-            if (Staff.StaffId != 2)
+            if (Staff.StaffId != 32)
             {
                 OK = false;
             }
@@ -206,13 +206,13 @@ namespace Testing5
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 staffID = 2;
+            Int32 staffID = 32;
 
             //invoke the method
             found = Staff.Find(staffID);
 
             //check the staffId
-            if (Staff.StaffName != "Joe")
+            if (Staff.StaffName != "Testing Don't Delete")
             {
                 OK = false;
             }
@@ -233,13 +233,13 @@ namespace Testing5
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 staffID = 2;
+            Int32 staffID = 32;
 
             //invoke the method
             found = Staff.Find(staffID);
 
             //check the staffId
-            if (Staff.JobTitle != "cleaner")
+            if (Staff.JobTitle != "admin")
             {
                 OK = false;
             }
@@ -260,13 +260,13 @@ namespace Testing5
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 staffID = 2;
+            Int32 staffID = 32;
 
             //invoke the method
             found = Staff.Find(staffID);
 
             //check the staffId
-            if (Staff.StaffEmail != "joe@work.com")
+            if (Staff.StaffEmail != "test@work.com")
             {
                 OK = false;
             }
@@ -287,13 +287,13 @@ namespace Testing5
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 staffID = 2;
+            Int32 staffID = 32;
 
             //invoke the method
             found = Staff.Find(staffID);
 
             //check the staffId
-            if (Staff.StaffAddress != "1 main street")
+            if (Staff.StaffAddress != "test address")
             {
                 OK = false;
             }
@@ -314,13 +314,13 @@ namespace Testing5
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 staffID = 2;
+            Int32 staffID = 32;
 
             //invoke the method
             found = Staff.Find(staffID);
 
             //check the staffId
-            if (Staff.DateJoined != Convert.ToDateTime("01/01/2024"))
+            if (Staff.DateJoined != Convert.ToDateTime("22/05/2024"))
             {
                 OK = false;
             }
@@ -341,13 +341,13 @@ namespace Testing5
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 staffID = 2;
+            Int32 staffID = 32;
 
             //invoke the method
             found = Staff.Find(staffID);
 
             //check the staffId
-            if (Staff.IsAdmin != false)
+            if (Staff.IsAdmin != true)
             {
                 OK = false;
             }
