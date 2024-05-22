@@ -95,7 +95,34 @@ namespace Testing2
             Assert.AreEqual(AllStocks.Count, TestList.Count);
         }
 
-        
+        //[TestMethod]
+        //public void AddMethodOK()
+        //{
+            //create an instance of the class we want to create
+            //clsStockCollection AllStocks = new clsStockCollection();
+            //create the item of test data
+            //clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            //Int32 PrimaryKey = 0;
+            //set its properties
+            //TestItem.CarID = 1;
+            //TestItem.StockTotal = 12;
+            //TestItem.CarModel = "Ford";
+            //TestItem.CarColour = "Blue";
+            //TestItem.CarBrand = "Focus";
+            //TestItem.StockArriveDate = DateTime.Now;
+            //TestItem.StockAvailable = true;
+            //set ThisStock to the test data
+            //AllStocks.ThisStock = TestItem;
+            //add the record
+            //PrimaryKey = AllStocks.Add();
+            //set the primary key of the test data
+            //TestItem.CarID = PrimaryKey;
+            //find the record
+            //AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see that the two values are the same
+            //Assert.AreEqual(AllStocks.ThisStock, TestItem);
+        //}
 
     }
 }

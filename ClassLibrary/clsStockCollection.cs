@@ -5,6 +5,10 @@ namespace ClassLibrary
 {
     public class clsStockCollection
     {
+        //private data member for the list
+        List<clsStock> mStockList = new List<clsStock>();
+        //private member data for thisStock
+        clsStock mThisStock = new clsStock();
         public List<clsStock> StockList
         {
             get
@@ -32,12 +36,14 @@ namespace ClassLibrary
         }
         public object ThisStock { get; set; }
 
-        //private data member for the list
-        List<clsStock> mStockList = new List<clsStock>();
+        
 
         //constructor for the class
         public clsStockCollection()
         {
+
+            
+
             //variable for the index
             Int32 Index = 0;
             //vairiable to store the data connect
@@ -68,5 +74,9 @@ namespace ClassLibrary
             }
         }
 
+        public int Add()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
