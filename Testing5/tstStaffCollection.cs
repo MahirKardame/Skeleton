@@ -183,5 +183,57 @@ namespace Testing5
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+        [TestMethod]
+        public void ReportByJobTitleOK()
+        {
+            //create an instance of the class containing unfiltered records
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create another instance to filter
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //apply a blank string (should return all records)
+            FilteredStaff.ReportByJobTitle("");
+            Assert.AreEqual(AllStaff.Count, FilteredStaff.Count);
+
+        }
+        [TestMethod]
+        public void ReportByJobTitleNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //apply a job title that doesn't exist
+            FilteredStaff.ReportByJobTitle("xxxxxxxx");
+            Assert.AreEqual(0, FilteredStaff.Count);
+
+        }
+        [TestMethod]
+        public void ReportByJobTitleTestDataFound() 
+        {
+            //create an instance of the class we want to create
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //create a variable to store the outcome
+            Boolean OK = true;
+            //apply a job title that does exist
+            FilteredStaff.ReportByJobTitle("filterTesting");
+            //check that the correct number of records are found
+            if (FilteredStaff.Count == 2)
+            {
+                if (FilteredStaff.StaffList[0].StaffId != 56)
+                { 
+                    OK = false;
+                }
+                if (FilteredStaff.StaffList[1].StaffId != 57)
+                {
+                    OK = false;
+                }
+                
+            }
+            else
+            {
+                OK = false;
+            }
+
+            //test to see that the filtered records are in the list
+            Assert.IsTrue(OK);
+        }
     }
 }

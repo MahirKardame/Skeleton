@@ -21,8 +21,8 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
     {
         //create a new instance of the collection class
         clsStaffCollection AllStaff = new clsStaffCollection();
-        //set the primary of ThisStaffMember
-        AllStaff.ThisStaffMember.StaffId = StaffId;
+        //find the record to be deleted
+        AllStaff.ThisStaffMember.Find(StaffId);
         //delete the record
         AllStaff.Delete();
         //redirect back to the main page
