@@ -10,17 +10,20 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:ListBox ID="lstCustomerList" runat="server" style="z-index: 1; left: 15px; top: 13px; position: absolute; height: 393px; width: 446px"></asp:ListBox>
+        <asp:ListBox ID="lstCustomerList" runat="server" style="z-index: 1; left: 10px; top: 88px; position: absolute; height: 393px; width: 446px"></asp:ListBox>
         <p>
-            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 32px; top: 446px; position: absolute" Text="Add" height="26px" width="55px" />
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 34px; top: 497px; position: absolute" Text="Add" height="26px" width="55px" />
         </p>
-        <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 204px; top: 446px; position: absolute" Text="Edit" height="26px" width="55px" />
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 21px; top: 636px; position: absolute"></asp:Label>
-        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 388px; top: 443px; position: absolute" Text="Delete" />
-        <asp:Button ID="btnApplyFilter" runat="server" height="26px" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 24px; top: 573px; position: absolute" Text="Apply Filter" width="95px" />
-        <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 159px; top: 572px; position: absolute" Text="Clear Filter" />
-        <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 155px; top: 527px; position: absolute"></asp:TextBox>
-        <asp:Label ID="lblFullName" runat="server" style="z-index: 1; left: 23px; top: 527px; position: absolute" Text="Enter a Full Name"></asp:Label>
+        <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 189px; top: 499px; position: absolute" Text="Edit" height="26px" width="55px" />
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 340px; top: 499px; position: absolute" Text="Delete" />
+        <asp:Button ID="btnApplyFilter" runat="server" height="26px" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 10px; top: 617px; position: absolute" Text="Apply Filter" width="95px" />
+        <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 147px; top: 618px; position: absolute" Text="Clear Filter" />
+        <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 162px; top: 555px; position: absolute"></asp:TextBox>
+        <asp:Label ID="lblFullName" runat="server" style="z-index: 1; left: 18px; top: 556px; position: absolute" Text="Enter a Full Name"></asp:Label>
+        <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" style="z-index: 1; top: 618px; position: absolute; bottom: 230px; left: 295px" Text="Return to Main Menu" />
+        <p>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 14px; top: 675px; position: absolute"></asp:Label>
+        </p>
     </form>
 </body>
 </html>
