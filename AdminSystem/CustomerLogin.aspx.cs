@@ -34,6 +34,11 @@ public partial class CustomerLogin : System.Web.UI.Page
             //record the error
             lblError.Text = "Enter a Username ";
         }
+        else if (txtPassword.Text == "")
+        {
+            //record the error
+            lblError.Text = "Enter a Password ";
+        }
         //if found
         else if (Found == true)
         {
