@@ -52,6 +52,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of the staff class
         clsStaff Staff = new clsStaff();
+        //capture the StaffId
+        Int32 StaffId = Convert.ToInt32(txtStaffId.Text);
         //capture the staffName
         string StaffName = txtStaffName.Text;
         //capture the job title
@@ -68,7 +70,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Error = Staff.Valid(StaffName, JobTitle, StaffEmail, StaffAddress, DateJoined);
         if(Error == "")
         {
-            
+            //capture the staffId 
+            Staff.StaffId = Convert.ToInt32(txtStaffId.Text);
             //capture the staffName
             Staff.StaffName = txtStaffName.Text;
             //capture the job title
@@ -100,6 +103,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 StaffList.ThisStaffMember.Find(StaffId);
                 //set the thisStaffMember property
                 StaffList.ThisStaffMember = Staff;
+                //update the record
                 StaffList.Update();
             }
 
