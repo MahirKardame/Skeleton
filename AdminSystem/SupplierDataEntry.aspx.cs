@@ -123,4 +123,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkAvailable.Checked = AnSupplier.Available;
         }
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to the list page
+        Response.Redirect("SupplierList.aspx");
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu page
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
