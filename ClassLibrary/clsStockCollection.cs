@@ -34,7 +34,19 @@ namespace ClassLibrary
                 //we shall worry about this later
             }
         }
-        public object ThisStock { get; set; }
+        public clsStock ThisStock
+        {
+            get
+            {
+                //return the private data
+                return mThisStock;
+            }
+            set
+            {
+                //set the private data
+                mThisStock = value;
+            }
+        }
 
         
 
@@ -72,11 +84,42 @@ namespace ClassLibrary
                 //point at the next record
                 Index++;
             }
+
+
         }
 
         public int Add()
         {
-            throw new NotImplementedException();
+            //adds a record to the database based on the values of mThisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StockTotal", mThisStock.StockTotal);
+            DB.AddParameter("@CarModel", mThisStock.CarModel);
+            DB.AddParameter("@CarColour", mThisStock.CarColour);
+            DB.AddParameter("@CarBrand", mThisStock.CarBrand);
+            DB.AddParameter("@StockAvailable", mThisStock.StockAvailable);
+            DB.AddParameter("@StockArriveDate", mThisStock.StockArriveDate);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblStock_Insert");
+        }
+
+        public void Update()
+        {
+            //update an existing record based on the values of thisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters fpr the new stored procedure
+            DB.AddParameter("@CarID", mThisStock.CarID);
+            DB.AddParameter("@StockTotal", mThisStock.StockTotal);
+            DB.AddParameter("@CarModel", mThisStock.CarModel);
+            DB.AddParameter("@CarColour", mThisStock.CarColour);
+            DB.AddParameter("@CarBrand", mThisStock.CarBrand);
+            DB.AddParameter("@StockAvailable", mThisStock.StockAvailable);
+            DB.AddParameter("@StockArriveDate", mThisStock.StockArriveDate);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Update");
         }
     }
 }

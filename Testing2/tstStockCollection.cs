@@ -95,34 +95,73 @@ namespace Testing2
             Assert.AreEqual(AllStocks.Count, TestList.Count);
         }
 
-        //[TestMethod]
-        //public void AddMethodOK()
-        //{
+        [TestMethod]
+        public void AddMethodOK()
+        {
             //create an instance of the class we want to create
-            //clsStockCollection AllStocks = new clsStockCollection();
+            clsStockCollection AllStocks = new clsStockCollection();
             //create the item of test data
-            //clsStock TestItem = new clsStock();
+            clsStock TestItem = new clsStock();
             //variable to store the primary key
-            //Int32 PrimaryKey = 0;
+            Int32 PrimaryKey = 0;
             //set its properties
-            //TestItem.CarID = 1;
-            //TestItem.StockTotal = 12;
-            //TestItem.CarModel = "Ford";
-            //TestItem.CarColour = "Blue";
-            //TestItem.CarBrand = "Focus";
-            //TestItem.StockArriveDate = DateTime.Now;
-            //TestItem.StockAvailable = true;
+            TestItem.CarID = 1;
+            TestItem.StockTotal = 3;
+            TestItem.CarModel = "911";
+            TestItem.CarColour = "Black";
+            TestItem.CarBrand = "Porsche";
+            TestItem.StockArriveDate = DateTime.Now;
+            TestItem.StockAvailable = true;
             //set ThisStock to the test data
-            //AllStocks.ThisStock = TestItem;
+            AllStocks.ThisStock = TestItem;
             //add the record
-            //PrimaryKey = AllStocks.Add();
+            PrimaryKey = AllStocks.Add();
             //set the primary key of the test data
-            //TestItem.CarID = PrimaryKey;
+            TestItem.CarID = PrimaryKey;
             //find the record
-            //AllStocks.ThisStock.Find(PrimaryKey);
+            AllStocks.ThisStock.Find(PrimaryKey);
             //test to see that the two values are the same
-            //Assert.AreEqual(AllStocks.ThisStock, TestItem);
-        //}
+            Assert.AreEqual(AllStocks.ThisStock, TestItem);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.StockTotal = 3;
+            TestItem.CarModel = "911";
+            TestItem.CarColour = "Black";
+            TestItem.CarBrand = "Porsche";
+            TestItem.StockArriveDate = DateTime.Now;
+            TestItem.StockAvailable = true;
+            //set ThisStock to the test data
+            AllStocks.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStocks.Add();
+            //set the primary key of the test data
+            TestItem.CarID = PrimaryKey;
+            //modify the test record
+            TestItem.StockTotal = 0;
+            TestItem.CarModel = "Aventador";
+            TestItem.CarColour = "Purple";
+            TestItem.CarBrand = "Lamborghini";
+            TestItem.StockArriveDate = DateTime.Now;
+            TestItem.StockAvailable = false;
+            //set the record based on the new test data
+            AllStocks.ThisStock = TestItem;
+            //update the record
+            AllStocks.Update();
+            //find the record
+            AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see of ThisStock matches the test data
+            Assert.AreEqual(AllStocks.ThisStock, TestItem);
+        }
 
     }
 }
