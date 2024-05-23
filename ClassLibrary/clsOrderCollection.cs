@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 namespace ClassLibrary
 {
@@ -52,33 +53,12 @@ namespace ClassLibrary
         }
         public clsOrderCollection()
         {
-            // Variable for the index.
-            Int32 Index = 0;
-            // Variable to store the record count.
-            Int32 RecordCount = 0;
             // Object for the data connection.
             clsDataConnection sqlDB = new clsDataConnection();
             // Execute the stored procedure.
             sqlDB.Execute("sproc_tblOrder_SelectAll");
-            // Get the count of records.
-            RecordCount = sqlDB.Count;
-            // While there are records to process.
-            while (Index < RecordCount) 
-            {
-                // Create a blank address.
-                clsOrder AnOrder = new clsOrder();
-                // Read in the fields for the current record.
-                AnOrder.OrderID = Convert.ToInt32(sqlDB.DataTable.Rows[Index]["OrderID"]);
-                AnOrder.IsPaid = Convert.ToBoolean(sqlDB.DataTable.Rows[Index]["IsPaid"]);
-                AnOrder.DateOrderPlaced = Convert.ToDateTime(sqlDB.DataTable.Rows[Index]["DateOrderPlaced"]);
-                AnOrder.StaffNote = Convert.ToString(sqlDB.DataTable.Rows[Index]["StaffNote"]);
-                AnOrder.CustomerNote = Convert.ToString(sqlDB.DataTable.Rows[Index]["CustomerNote"]);
-                AnOrder.OrderPrice = Convert.ToInt32(sqlDB.DataTable.Rows[Index]["OrderPrice"]);
-                // Add the record to the private data member.
-                privOrderList.Add(AnOrder);
-                // Point at the next record.
-                Index++;
-            }
+            // Populate the array lit with the data table.
+            PopulateArray(sqlDB);
         }
 
         public int Add()
@@ -125,5 +105,49 @@ namespace ClassLibrary
             // Execute the stored procedure.
             sqlDB.Execute("sproc_tblOrder_Delete");
         }
+
+        public void ReportByStaffNote(string StaffNote)
+        {
+            // Filters the records based on staff note.
+            // Connect to the database.
+            clsDataConnection sqlDB = new clsDataConnection();
+            // Set the parameters for the stored procedure.
+            sqlDB.AddParameter("@StaffNote", StaffNote);
+            // Execute the stored procedure.
+            sqlDB.Execute("sproc_tblOrder_FilterByStaffNote");
+            // Populate the array list with the data table.
+            PopulateArray(sqlDB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            // Populates the array list based on the data table in the parameter DB.
+            // Variable for the index.
+            Int32 Index = 0;
+            // Variable to store the record count.
+            Int32 RecordCount;
+            // Get the count of records.
+            RecordCount = DB.Count;
+            // Clear the private array list
+            privOrderList = new List<clsOrder>();
+            // While there are records to process.
+            while (Index < RecordCount)
+            {
+                // Create a blank Order object.
+                clsOrder AnOrder = new clsOrder();
+                // Read in thefields from the current record.
+                AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                AnOrder.IsPaid = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsPaid"]);
+                AnOrder.DateOrderPlaced = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOrderPlaced"]);
+                AnOrder.DeliveryType = Convert.ToString(DB.DataTable.Rows[Index]["DeliveryType"]);
+                AnOrder.StaffNote = Convert.ToString(DB.DataTable.Rows[Index]["StaffNote"]);
+                AnOrder.CustomerNote = Convert.ToString(DB.DataTable.Rows[Index]["CustomerNote"]);
+                AnOrder.OrderPrice = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderPrice"]);
+                // Add the record to the private data member.
+                privOrderList.Add(AnOrder);
+                // Point at the next record.
+                Index++;
+            }
+    }
     }
 }

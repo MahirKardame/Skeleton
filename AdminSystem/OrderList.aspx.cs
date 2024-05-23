@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -27,7 +28,7 @@ public partial class _1_List : System.Web.UI.Page
         // Set the name of the primary key.
         lstOrderList.DataValueField = "OrderID";
         // Set the data field to display.
-        lstOrderList.DataTextField = "CustomerNote";
+        lstOrderList.DataTextField = "StaffNote";
         // Bind the data to the list.
         lstOrderList.DataBind();
     }
@@ -77,5 +78,39 @@ public partial class _1_List : System.Web.UI.Page
         {
             lblError.Text = "Please select a record from the list to edit";
         }
+    }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        // Create an instance of the Order collection.
+        clsOrderCollection Orders = new clsOrderCollection();
+        // Retrieve the value of staff note from presentation layer.
+        Orders.ReportByStaffNote(txtFilter.Text);
+        // Set the data source to the list of orders in the collection.
+        lstOrderList.DataSource = Orders.OrderList;
+        // St the name of the primary key.
+        lstOrderList.DataValueField = "OrderID";
+        // Set the name of the field to display.
+        lstOrderList.DataTextField = "StaffNote";
+        //Bind the data to the list
+        lstOrderList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        // Create an instance of the Order collection.
+        clsOrderCollection FixOrders = new clsOrderCollection();
+        // Empty string
+        FixOrders.ReportByStaffNote("");
+        // Clear any existing filter.
+        txtFilter.Text = "";
+        // Set the data source to the list of orders in the collection.
+        lstOrderList.DataSource = FixOrders.OrderList;
+        // St the name of the primary key.
+        lstOrderList.DataValueField = "OrderID";
+        // Set the name of the field to display.
+        lstOrderList.DataTextField = "StaffNote";
+        //Bind the data to the list
+        lstOrderList.DataBind();
     }
 }

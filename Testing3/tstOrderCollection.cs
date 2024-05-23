@@ -185,5 +185,29 @@ namespace Testing3
             // Test to see that the record was not found.
             Assert.IsFalse(Found);
         }
+
+        [TestMethod]
+        public void ReportByStaffNoteMethodOK()
+        {
+            // Create an instance of the clas containing unfiltered results.
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            // Create an instance of the filtered data.
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            // Apply a blank string (should return all records)
+            FilteredOrders.ReportByStaffNote("");
+            // Test to see hat the two values are the same.
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByStaffNoteNoneFound() 
+        {
+            // Create an instance of the class we want to create.
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            // Apply a post code that doesn't exist.
+            FilteredOrders.ReportByStaffNote("Foo bar.");
+            // Test to see that there are no records.
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
     }
 }
