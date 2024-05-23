@@ -25,7 +25,7 @@ namespace ClassLibrary
             //while there are records to process
             while(Index < RecordCount)
             {
-                //create a blank address
+                //create a blank staff object
                 clsStaff Staff = new clsStaff();
                 //read in the fields for the current record
                 Staff.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["staffId"]);
@@ -126,6 +126,51 @@ namespace ClassLibrary
             DB.AddParameter("@staffId", mThisStaffMember.StaffId);
             //excute the stored procedure
             DB.Execute("sproc_tblStaff_Delete");
+        }
+
+        public void ReportByJobTitle(string JobTitle)
+        {
+            //filters the records based on a full or partial job title
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the job title parameter to the database
+            DB.AddParameter("@JobTitle", JobTitle);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_FilterByJobTitle");
+            //populate array list with data fetched from the table
+            populateArray(DB);
+        }
+
+        void populateArray(clsDataConnection DB)
+        {
+
+            //populates the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mStaffList = new List<clsStaff>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank staff object
+                clsStaff Staff = new clsStaff();
+                //read in the fields for the current record
+                Staff.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["staffId"]);
+                Staff.StaffName = Convert.ToString(DB.DataTable.Rows[Index]["staffName"]);
+                Staff.JobTitle = Convert.ToString(DB.DataTable.Rows[Index]["jobTitle"]);
+                Staff.StaffEmail = Convert.ToString(DB.DataTable.Rows[Index]["staffEmail"]);
+                Staff.StaffAddress = Convert.ToString(DB.DataTable.Rows[Index]["staffAddress"]);
+                Staff.DateJoined = Convert.ToDateTime(DB.DataTable.Rows[Index]["dateJoined"]);
+                Staff.IsAdmin = Convert.ToBoolean(DB.DataTable.Rows[Index]["isAdmin"]);
+                //add the record to the private data member
+                mStaffList.Add(Staff);
+                //point at the next record
+                Index++;
+            }
         }
     }
 
