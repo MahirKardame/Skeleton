@@ -17,7 +17,12 @@ public partial class _1_List : System.Web.UI.Page
             DisplaySuppliers();
         }
 
-        
+        //create a new instance of clsSupplierUser
+        clsSupplierUser AnUser = new clsSupplierUser();
+        //get data from the session object
+        AnUser = (clsSupplierUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
     }
 
      void DisplaySuppliers()
@@ -118,5 +123,11 @@ public partial class _1_List : System.Web.UI.Page
         lstSupplierList.DataTextField = "Address";
         //bind the data to the list
         lstSupplierList.DataBind();
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu page
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

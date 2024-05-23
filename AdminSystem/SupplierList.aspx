@@ -9,10 +9,11 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 115px; top: 263px; position: absolute" Text="Edit" height="26px" width="55px" />
-            <asp:ListBox ID="lstSupplierList" runat="server" style="z-index: 1; left: 10px; top: 15px; position: absolute; height: 231px; width: 288px"></asp:ListBox>
-            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 28px; top: 263px; position: absolute" Text="Add" height="26px" width="55px" />
-            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 202px; top: 263px; position: absolute" Text="Delete" height="26px" width="55px" />
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 115px; top: 288px; position: absolute" Text="Edit" height="26px" width="55px" />
+            <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" style="z-index: 1; left: 304px; top: 463px; position: absolute; width: 153px" Text="Return to Main Menu" />
+            <asp:ListBox ID="lstSupplierList" runat="server" style="z-index: 1; left: 22px; top: 45px; position: absolute; height: 231px; width: 288px"></asp:ListBox>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 29px; top: 288px; position: absolute" Text="Add" height="26px" width="55px" />
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 202px; top: 288px; position: absolute" Text="Delete" height="26px" width="55px" />
             <asp:Label ID="lblFilterAddress" runat="server" style="z-index: 1; left: 13px; top: 326px; position: absolute" Text="Enter an Address"></asp:Label>
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 16px; top: 431px; position: absolute"></asp:Label>
             <asp:TextBox ID="txtFilterAddress" runat="server" style="z-index: 1; left: 141px; top: 328px; position: absolute; width: 145px"></asp:TextBox>
