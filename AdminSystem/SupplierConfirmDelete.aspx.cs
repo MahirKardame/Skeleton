@@ -19,11 +19,10 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
 
     protected void btnYes_Click(object sender, EventArgs e)
     {
-        clsSupplier NewSupplier = new clsSupplier();
-        NewSupplier.SupplierId = SupplierId;
         //create a new instance of the supplier book collection class
         clsSupplierCollection SupplierBook = new clsSupplierCollection();
-        SupplierBook.ThisSupplier = NewSupplier;
+        //find the record to delete
+        SupplierBook.ThisSupplier.Find(SupplierId);
         //find the record to delete
         SupplierBook.Delete();
         //redirect back to the main page
