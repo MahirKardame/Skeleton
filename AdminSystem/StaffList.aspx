@@ -2,7 +2,7 @@
 
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head runat="server"><title></title></head><body><form id="form1" runat="server">
         <div>
-            <asp:ListBox ID="lstStafflist" runat="server" style="z-index: 1; left: 22px; top: 15px; position: absolute; height: 285px; width: 460px"></asp:ListBox>
+            <asp:ListBox ID="lstStafflist" runat="server" style="z-index: 1; left: 22px; top: 37px; position: absolute; height: 285px; width: 460px"></asp:ListBox>
         </div>
         <p>
             &nbsp;</p>
@@ -18,8 +18,9 @@
         </p>
         <asp:Label ID="lblFilter" runat="server" style="z-index: 1; left: 52px; top: 408px; position: absolute" Text="Enter a Job Title:"></asp:Label>
         <asp:TextBox ID="textboxFilter" runat="server" style="z-index: 1; left: 229px; top: 408px; position: absolute"></asp:TextBox>
-        <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 52px; top: 479px; position: absolute" Text="Apply Filter" />
-        <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 228px; top: 479px; position: absolute" Text="Clear Filter" />
+        <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 52px; top: 478px; position: absolute" Text="Apply Filter" />
+        <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 228px; top: 478px; position: absolute" Text="Clear Filter" />
+        <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" style="z-index: 1; left: 429px; top: 478px; position: absolute" Text="Return To Main Menu" />
     </form>
 </body>
 </html>
