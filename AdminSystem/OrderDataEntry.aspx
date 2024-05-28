@@ -13,6 +13,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" style="z-index: 1; left: 225px; top: 365px; position: absolute" Text="Cancel" />
+        <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" style="z-index: 1; left: 104px; top: 414px; position: absolute" Text="Return to Main Menu" />
         <asp:TextBox ID="txtOrderID" runat="server" style="z-index: 1; left: 157px; top: 16px; position: absolute"></asp:TextBox>
         <asp:CheckBox ID="chkPaid" runat="server" style="z-index: 1; left: 91px; top: 63px; position: absolute" Text="Paid" />
         <asp:Label ID="lblDatePlaced" runat="server" style="z-index: 1; left: 82px; top: 117px; position: absolute" Text="Date Placed"></asp:Label>

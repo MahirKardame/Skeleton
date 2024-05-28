@@ -17,6 +17,14 @@ public partial class _1_List : System.Web.UI.Page
             // Update the list box.
             DisplayOrders();
         }
+
+        // Create a new instance of clsOrderUser
+        clsOrderUser AnUser = new clsOrderUser();
+        // Get data from the session object.
+        AnUser = (clsOrderUser)Session["AnUser"];
+        // Display the username.
+        Response.Write("Logged in as: " + AnUser.UserName);
+
     }
 
     void DisplayOrders()
@@ -112,5 +120,10 @@ public partial class _1_List : System.Web.UI.Page
         lstOrderList.DataTextField = "StaffNote";
         //Bind the data to the list
         lstOrderList.DataBind();
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
