@@ -1,4 +1,4 @@
-﻿-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StaffList.aspx.cs" Inherits="_1_List" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StaffList.aspx.cs" Inherits="_1_List" %>
 
 <!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head runat="server"><title></title></head><body><form id="form1" runat="server">
         <div>
@@ -14,7 +14,7 @@
         <p>
             &nbsp;</p>
         <p>
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 52px; top: 571px; position: absolute"></asp:Label>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 52px; top: 571px; position: absolute" ForeColor="#FF3300"></asp:Label>
         </p>
         <asp:Label ID="lblFilter" runat="server" style="z-index: 1; left: 52px; top: 408px; position: absolute" Text="Enter a Job Title:"></asp:Label>
         <asp:TextBox ID="textboxFilter" runat="server" style="z-index: 1; left: 229px; top: 408px; position: absolute"></asp:TextBox>
