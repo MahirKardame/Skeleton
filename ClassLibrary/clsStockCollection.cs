@@ -53,37 +53,12 @@ namespace ClassLibrary
         //constructor for the class
         public clsStockCollection()
         {
-
-            
-
-            //variable for the index
-            Int32 Index = 0;
-            //vairiable to store the data connect
-            Int32 RecordCount = 0;
-            //object for the data connect
+            //object for data connection
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblStock_SelectAll");
-            //get the count of records to process
-            RecordCount = DB.Count;
-            //while there ae records to process
-            while (Index < RecordCount)
-            {
-                //create a blank stock
-                clsStock AStock = new clsStock();
-                //read in the fields for the current record
-                AStock.CarID = Convert.ToInt32(DB.DataTable.Rows[Index]["CarID"]);
-                AStock.StockTotal = Convert.ToInt32(DB.DataTable.Rows[Index]["StockTotal"]);
-                AStock.CarModel = Convert.ToString(DB.DataTable.Rows[Index]["CarModel"]);
-                AStock.CarColour = Convert.ToString(DB.DataTable.Rows[Index]["CarColour"]);
-                AStock.CarBrand = Convert.ToString(DB.DataTable.Rows[Index]["CarBrand"]);
-                AStock.StockArriveDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["StockArriveDate"]);
-                AStock.StockAvailable = Convert.ToBoolean(DB.DataTable.Rows[Index]["StockAvailable"]);
-                //add the record to the private data member
-                mStockList.Add(AStock);
-                //point at the next record
-                Index++;
-            }
+            //populate the array list with the data table
+            PopulateArray(DB);
 
 
         }
@@ -120,6 +95,61 @@ namespace ClassLibrary
             DB.AddParameter("@StockArriveDate", mThisStock.StockArriveDate);
             //execute the stored procedure
             DB.Execute("sproc_tblStock_Update");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure 
+            DB.AddParameter("@CarID", mThisStock.CarID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_Delete");
+        }
+
+        public void ReportByCarBrand(string CarBrand)
+        {
+            //filters the records based on a full or partial car brand
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the car brand parameter to the database
+            DB.AddParameter("@CarBrand", CarBrand);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByCarBrand");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mStockList = new List<clsStock>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank stock object
+                clsStock AStock = new clsStock();
+                //read in the fields from the current record
+                AStock.CarID = Convert.ToInt32(DB.DataTable.Rows[Index]["CarID"]);
+                AStock.StockTotal = Convert.ToInt32(DB.DataTable.Rows[Index]["StockTotal"]);
+                AStock.CarModel = Convert.ToString(DB.DataTable.Rows[Index]["CarModel"]);
+                AStock.CarColour = Convert.ToString(DB.DataTable.Rows[Index]["CarColour"]);
+                AStock.CarBrand = Convert.ToString(DB.DataTable.Rows[Index]["CarBrand"]);
+                AStock.StockArriveDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["StockArriveDate"]);
+                AStock.StockAvailable = Convert.ToBoolean(DB.DataTable.Rows[Index]["StockAvailable"]);
+                //add the record to the private data member
+                mStockList.Add(AStock);
+                //point at the next record
+                Index++;
+            }
         }
     }
 }

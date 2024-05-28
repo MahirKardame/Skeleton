@@ -163,5 +163,93 @@ namespace Testing2
             Assert.AreEqual(AllStocks.ThisStock, TestItem);
         }
 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //Create an insatance of the class we want to create
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+            //Variable to store the priamry key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.CarID = 1;
+            TestItem.StockTotal = 3;
+            TestItem.CarModel = "911";
+            TestItem.CarColour = "Black";
+            TestItem.CarBrand = "Porsche";
+            TestItem.StockArriveDate = DateTime.Now;
+            TestItem.StockAvailable = true;
+            //set ThisStock to the test data
+            AllStocks.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStocks.Add();
+            //set the primary key of the test data
+            TestItem.CarID = PrimaryKey;
+            //find the record
+            AllStocks.ThisStock.Find(PrimaryKey);
+            //delete the record
+            AllStocks.Delete();
+            //now find the record
+            Boolean Found = AllStocks.ThisStock.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void ReportByCarBrandMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create an instance of the filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a blank string (should return all record)
+            FilteredStocks.ReportByCarBrand("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStocks.Count, FilteredStocks.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCarBrandNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection FilterdStocks = new clsStockCollection();
+            //apply a car brand that doesn't exist
+            FilterdStocks.ReportByCarBrand("Honda");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilterdStocks.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCarBrandTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a car brand that doesn't exist
+            FilteredStocks.ReportByCarBrand("Mini");
+            //check that the correct number of records are found
+            if (FilteredStocks.Count == 2)
+            {
+                //check to see that the first record is 80
+                if (FilteredStocks.StockList[0].CarID != 80)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 81
+                if (FilteredStocks.StockList[1].CarID != 81)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
+
     }
 }
