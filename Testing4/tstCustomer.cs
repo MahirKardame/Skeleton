@@ -833,11 +833,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 4;
+            Int32 CustomerID = 12;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //check the address id
-            if (AnCustomer.FullName != "Lando Norris")
+            if (AnCustomer.FullName != "Mikka Hakinnen")
             {
                 OK = false;
             }
