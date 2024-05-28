@@ -209,5 +209,36 @@ namespace Testing3
             // Test to see that there are no records.
             Assert.AreEqual(0, FilteredOrders.Count);
         }
+
+        [TestMethod]
+        public void ReportByStaffNoteTestDataFound()
+        {
+            //create an instance of the class we want to create
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //create a variable to store the outcome
+            Boolean OK = true;
+            //apply a job title that does exist
+            FilteredOrders.ReportByStaffNote("filterTesting");
+            //check that the correct number of records are found
+            if (FilteredOrders.Count == 2)
+            {
+                if (FilteredOrders.OrderList[0].OrderID != 56)
+                {
+                    OK = false;
+                }
+                if (FilteredOrders.OrderList[1].OrderID != 57)
+                {
+                    OK = false;
+                }
+
+            }
+            else
+            {
+                OK = false;
+            }
+
+            //test to see that the filtered records are in the list
+            Assert.IsTrue(OK);
+        }
     }
 }
