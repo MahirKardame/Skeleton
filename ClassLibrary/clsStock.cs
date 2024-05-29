@@ -203,7 +203,7 @@ namespace ClassLibrary
             if (carColour.Length == 0)
             {
                 //record the error
-                Error = Error + "The Stock Total may not be blank : ";
+                Error = Error + "The car colour may not be blank : ";
             }
             //if the CarColour is greater than 12 characters
             if (carColour.Length > 12)

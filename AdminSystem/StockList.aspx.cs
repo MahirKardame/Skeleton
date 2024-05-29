@@ -16,7 +16,16 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayStocks();
         }
+
+        //create a new instance of the clsStockUser
+        clsStockUser AnUser = new clsStockUser();
+        //get data from the session object
+        AnUser = (clsStockUser)Session["AnUser"];
+        //display the username
+        Response.Write("Logged in as: " + AnUser.UserName);
     }
+
+    
 
     void DisplayStocks()
     {
@@ -118,5 +127,18 @@ public partial class _1_List : System.Web.UI.Page
         lstStockList.DataTextField = "CarBrand";
         //bind the data to the list
         lstStockList.DataBind();
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+
+
+    protected void lstStockList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }
