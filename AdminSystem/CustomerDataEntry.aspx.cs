@@ -39,6 +39,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtCustomerPhone.Text = CustomerBook.ThisCustomer.CustomerPhone.ToString();
         txtRegistrationDate.Text = CustomerBook.ThisCustomer.RegistrationDate.ToString();
         chkEmailOptIn.Checked = CustomerBook.ThisCustomer.EmailOptIn;
+        txtAddress.Text = CustomerBook.ThisCustomer.Address.ToString();
     }
 
     protected void TextBox1_TextChanged(object sender, EventArgs e)
