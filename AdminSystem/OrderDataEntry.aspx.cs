@@ -20,10 +20,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             {
                 // Display the current data for the record.
                 DisplayOrder();
+                lblError.Text = "To find, change the ID to a valid ID.";
+                btnFind.Visible = true;
+                txtDatePlaced.Enabled = false;
             }
             else
             {
                 txtOrderID.Text = "-1";
+                btnFind.Visible = false;
                 txtOrderID.Enabled = false;
             }
         }
@@ -68,7 +72,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             Error = AnOrder.Valid(OrderID, IsPaid, DateTime.Now.Date.ToString(), DeliveryType, OrderPrice, StaffNote, CustomerNote);
         }
-        
+
         // Store the data.
         if (Error == "")
         {
@@ -83,7 +87,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             clsOrderCollection OrderList = new clsOrderCollection();
 
             // If this is a new record i.e. AddressID
-            if (Convert.ToInt32(OrderID) == -1) 
+            if (Convert.ToInt32(OrderID) == -1)
             {
                 // Set the ThisOrder property.
                 OrderList.ThisOrder = AnOrder;
