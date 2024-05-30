@@ -15,17 +15,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
         OrderID = Convert.ToInt32(Session["OrderID"]);
         if (IsPostBack == false) 
         {
-            // If this is the not a new recor
             if (OrderID != -1)
             {
-                // Display the current data for the record.
+                /* If entering from the Edit order pathway, set the OrderID to the supplied OrderID
+                 * and display the data from the order using DisplayOrder method. Then, ensure the
+                 * Find button is visible (as it could be disabled previously) and prevent the user
+                 * from updating the Date Placed field (as the field is NOT VALIDATED from this pathway)
+                 * This is because the Validation test prevents the date from being in the past.
+                 */
                 DisplayOrder();
                 lblError.Text = "To find, change the ID to a valid ID.";
                 btnFind.Visible = true;
                 txtDatePlaced.Enabled = false;
+                btnSubmit.Text = "Update";
             }
             else
             {
+                /* 
+                 * If entering from the Create order pathway, set the OrderID to -1 in order to force the OrderID 
+                 * to be the latest (highest) OrderID possible. Then, disable the Find button to prevent accessing 
+                 * data and unintentional data duplication, and disable the OrderID text field to prevent users from 
+                 * inputting their own OrderID.
+                 */
                 txtOrderID.Text = "-1";
                 btnFind.Visible = false;
                 txtOrderID.Enabled = false;
