@@ -105,8 +105,9 @@ public partial class _1_List : System.Web.UI.Page
         lstStockList.DataSource = AStock.StockList;
         //set the name of the primary key
         lstStockList.DataValueField = "CarID";
-        //set the name of the field to display
-        lstStockList.DataTextField = "CarBrand";
+        //set the name of the field to display - I am sorting by car brand
+        //but display the carmodels of that brand
+        lstStockList.DataTextField = "CarModel";
         //bind the data to the list
         lstStockList.DataBind();
     }
@@ -123,8 +124,9 @@ public partial class _1_List : System.Web.UI.Page
         lstStockList.DataSource = AStock.StockList;
         //set the name of the primary key
         lstStockList.DataValueField = "CarID";
-        //set the name of the field to display
-        lstStockList.DataTextField = "CarBrand";
+        //set the name of the field to display - I am sorting by car brand
+        //but display the carmodels of that brand
+        lstStockList.DataTextField = "CarModel";
         //bind the data to the list
         lstStockList.DataBind();
     }
