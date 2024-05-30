@@ -35,7 +35,7 @@
         </p>
         <asp:CheckBox ID="chkIsAdmin" runat="server" style="z-index: 1; left: 82px; top: 237px; position: absolute" Text="Is Admin" />
         <p>
-            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 24px; top: 273px; position: absolute"></asp:Label>
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 24px; top: 273px; position: absolute" ForeColor="#FF3300"></asp:Label>
         </p>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 46px; top: 308px; position: absolute" Text="OK" />
         <p>

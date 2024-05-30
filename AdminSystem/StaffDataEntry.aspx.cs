@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities.Statements;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,10 +18,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (IsPostBack == false)
         {
             //if this is not a new record
-            if (StaffId != 1)
+            if (StaffId != -1)
             {
                 //display the current data for the record
                 DisplayStaffMember();
+            }
+            else
+            {
+                //sets staffId to -1 for the add function
+                txtStaffId.Text = StaffId.ToString();
             }
         }
 
@@ -38,7 +44,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtJobTitle.Text = AllStaff.ThisStaffMember.JobTitle;
         txtStaffEmail.Text = AllStaff.ThisStaffMember.StaffEmail;
         txtStaffAddress.Text = AllStaff.ThisStaffMember.StaffAddress;
-        txtDateJoined.Text = AllStaff.ThisStaffMember.DateJoined.ToString();
+        txtDateJoined.Text = AllStaff.ThisStaffMember.DateJoined.ToShortDateString();
         chkIsAdmin.Checked = AllStaff.ThisStaffMember.IsAdmin;
 
 
@@ -129,21 +135,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a variable to store the result of the find method
         Boolean found = false;
         //get the primary key entered by the user
-        staffId = Convert.ToInt32(txtStaffId.Text);
-        //find the record
-        found = Staff.Find(staffId);
-        //if found
-        if(found)
+        if (txtStaffId.Text!= "")
         {
-            //display the properties in the form
-            txtStaffName.Text = Staff.StaffName;
-            txtJobTitle.Text = Staff.JobTitle;
-            txtStaffEmail.Text = Staff.StaffEmail;
-            txtStaffAddress.Text = Staff.StaffAddress;
-            txtDateJoined.Text = Staff.DateJoined.ToString();
-            chkIsAdmin.Checked = Staff.IsAdmin;
+            staffId = Convert.ToInt32(txtStaffId.Text);
+            //find the record
+            found = Staff.Find(staffId);
+            //if found
+            if (found)
+            {
+                //display the properties in the form
+                txtStaffName.Text = Staff.StaffName;
+                txtJobTitle.Text = Staff.JobTitle;
+                txtStaffEmail.Text = Staff.StaffEmail;
+                txtStaffAddress.Text = Staff.StaffAddress;
+                txtDateJoined.Text = Staff.DateJoined.ToString();
+                chkIsAdmin.Checked = Staff.IsAdmin;
 
+            }
         }
+        else
+        {
+            lblError.Text = "Enter a StaffId to find";
+        }
+
+
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
