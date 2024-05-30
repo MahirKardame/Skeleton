@@ -239,7 +239,7 @@ namespace Testing5
             found = Staff.Find(staffID);
 
             //check the staffId
-            if (Staff.JobTitle != "admin")
+            if (Staff.JobTitle != "testing")
             {
                 OK = false;
             }
