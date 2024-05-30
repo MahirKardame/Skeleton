@@ -27,6 +27,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             {
                 //sets staffId to -1 for the add function
                 txtStaffId.Text = StaffId.ToString();
+                txtStaffId.Enabled = false;
+                btnFind.Enabled = false;
             }
         }
 
