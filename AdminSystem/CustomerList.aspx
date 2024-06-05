@@ -22,7 +22,7 @@
         <asp:Label ID="lblFullName" runat="server" style="z-index: 1; left: 18px; top: 556px; position: absolute" Text="Enter a Full Name"></asp:Label>
         <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" style="z-index: 1; top: 618px; position: absolute; bottom: 230px; left: 295px" Text="Return to Main Menu" />
         <p>
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 14px; top: 675px; position: absolute"></asp:Label>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 14px; top: 675px; position: absolute" ForeColor="#FF3300"></asp:Label>
         </p>
     </form>
 </body>

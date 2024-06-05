@@ -43,7 +43,7 @@
         <asp:CheckBox ID="chkEmailOptIn" runat="server" style="z-index: 1; left: 133px; top: 424px; position: absolute" Text="EmailOptIn" width="128px" OnCheckedChanged="chkEmailOptIn_CheckedChanged" height="22px" />
         <p>
             &nbsp;</p>
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 9px; top: 464px; position: absolute; right: 527px"></asp:Label>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 9px; top: 464px; position: absolute; right: 527px" ForeColor="#FF3300"></asp:Label>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 12px; top: 562px; position: absolute; width: 70px; " Text="OK" />
         <asp:Button ID="btnCancel" runat="server" height="26px" style="z-index: 1; left: 155px; top: 564px; position: absolute; width: 70px" Text="Cancel" OnClick="btnCancel_Click" />
         <p>
