@@ -22,6 +22,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 //display the current data for the record
                 DisplayCustomer();
             }
+            else
+            {
+                //sets the customerID to -1 for the add function
+                txtCustomerID.Text = CustomerID.ToString();
+                txtCustomerID.Enabled = false;
+                btnFind.Enabled = false;
+            }
         }
 
     }
@@ -129,25 +136,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Int32 CustomerID;
         //create a variable to store the primary key
         Boolean Found = false;
-        //get the primary key entered by the user
-        CustomerID = Convert.ToInt32(txtCustomerID.Text);
-        //Find the record
-        Found = AnCustomer.Find(CustomerID);
-        //if found
-        if (Found == true)
+        //gets the primary key entered by the user
+        if(txtCustomerID.Text!= "")
         {
-            //display the values of the properties in the form
-            txtAddress.Text = AnCustomer.Address;
-            txtCustomerPhone.Text = AnCustomer.CustomerPhone;
-            txtCustomerEmail.Text = AnCustomer.CustomerEmail;
-            txtFullName.Text = AnCustomer.FullName;
-            txtRegistrationDate.Text = AnCustomer.RegistrationDate.ToString();
-            chkEmailOptIn.Checked = AnCustomer.EmailOptIn;
-
+            CustomerID = Convert.ToInt32(txtCustomerID.Text);
+            //Find the record
+            Found = AnCustomer.Find(CustomerID);
+            //if found
+            if (Found)
+            {
+                //display the values of the properties in the form
+                txtAddress.Text = AnCustomer.Address;
+                txtCustomerPhone.Text = AnCustomer.CustomerPhone;
+                txtCustomerEmail.Text = AnCustomer.CustomerEmail;
+                txtFullName.Text = AnCustomer.FullName;
+                txtRegistrationDate.Text = AnCustomer.RegistrationDate.ToString();
+                chkEmailOptIn.Checked = AnCustomer.EmailOptIn;
+            }
         }
-        
-
-
+        else
+        {
+            lblError.Text = "Enter a CustomerID to find";
+        }
 
     }
 

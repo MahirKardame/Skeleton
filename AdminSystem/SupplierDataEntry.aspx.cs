@@ -25,6 +25,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 //display the current data for the record
                 DisplaySupplier();
             }
+            else
+            {
+                //sets the customerID to -1 for the add function
+                txtSupplierId.Text = SupplierId.ToString();
+                txtSupplierId.Enabled = false;
+                btnFind.Enabled = false;
+            }
         }
     }
 

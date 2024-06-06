@@ -27,6 +27,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
             {
                 //sets staffId to -1 for the add function
                 txtStaffId.Text = StaffId.ToString();
+                txtStaffId.Enabled = false;
+                btnFind.Enabled = false;
             }
         }
 
@@ -148,7 +150,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 txtJobTitle.Text = Staff.JobTitle;
                 txtStaffEmail.Text = Staff.StaffEmail;
                 txtStaffAddress.Text = Staff.StaffAddress;
-                txtDateJoined.Text = Staff.DateJoined.ToString();
+                txtDateJoined.Text = Staff.DateJoined.ToShortDateString();
                 chkIsAdmin.Checked = Staff.IsAdmin;
 
             }
