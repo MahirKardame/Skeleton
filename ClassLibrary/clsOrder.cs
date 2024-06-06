@@ -221,7 +221,7 @@ namespace ClassLibrary
             }
             catch(Exception ex)
             {
-                Error = Error + "The OrderPrice must be an integer : " + ex;
+                Error = Error + "The OrderPrice must be an integer : ";
             }
             // Return any error messages.
             return Error;

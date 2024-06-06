@@ -58,7 +58,7 @@ public partial class _1_List : System.Web.UI.Page
         }
         else // If no record has been selected.
         {
-            lblError.Text = "Please select a record from the list to edit";
+            lblError.Text = "Please select a record from the list to edit.";
         }
     }
 
@@ -84,7 +84,7 @@ public partial class _1_List : System.Web.UI.Page
         }
         else // If no record has been selected.
         {
-            lblError.Text = "Please select a record from the list to edit";
+            lblError.Text = "Please select a record from the list to delete.";
         }
     }
 

@@ -24,7 +24,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                  * This is because the Validation test prevents the date from being in the past.
                  */
                 DisplayOrder();
-                lblError.Text = "To find, change the ID to a valid ID.";
+                btnFind.ToolTip = "To find, change the ID to a valid ID.";
                 btnFind.Visible = true;
                 txtDatePlaced.Enabled = false;
                 btnSubmit.Text = "Update";
@@ -38,7 +38,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
                  * inputting their own OrderID.
                  */
                 txtOrderID.Text = "-1";
-                btnFind.Visible = false;
+                btnFind.Enabled = false;
+                btnFind.ToolTip = "To find an Order, edit an order and follow the instructions.";
                 txtOrderID.Enabled = false;
             }
         }
@@ -157,7 +158,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            lblError.Text = ex.ToString();
+            lblError.Text = "Enter an OrderID!";
         }
     }
 
